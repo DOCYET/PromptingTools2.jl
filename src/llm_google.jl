@@ -130,7 +130,8 @@ Token counts may be character estimates for some models.
 - `usage_metadata.candidatesTokenCount`: Output tokens
 - `usage_metadata.cachedContentTokenCount`: Cached tokens (if caching enabled)
 """
-function extract_usage(::AbstractGoogleSchema, resp; model_id::String = "", elapsed::Float64 = 0.0)
+function extract_usage(
+        ::AbstractGoogleSchema, resp; model_id::String = "", elapsed::Float64 = 0.0)
     input_tokens = 0
     output_tokens = 0
     cache_read_tokens = 0

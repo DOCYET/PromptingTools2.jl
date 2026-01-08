@@ -409,7 +409,7 @@ struct GoogleSchema <: AbstractGoogleSchema end
     inputs::Any = nothing
     config_kwargs::Dict{Symbol, Any} = Dict{Symbol, Any}()
     usage_metadata::Dict{Symbol,
-        Any} = Dict{Symbol, Any}(
+    Any} = Dict{Symbol, Any}(
         :promptTokenCount => 50,
         :candidatesTokenCount => length(string(text)),
         :totalTokenCount => 50 + length(string(text))

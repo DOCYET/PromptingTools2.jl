@@ -1,12 +1,12 @@
 using PromptingTools2: TestEchoOpenAISchema, render, OpenAISchema, role4render
 using PromptingTools2: AIMessage, SystemMessage, AbstractMessage
 using PromptingTools2: UserMessage, UserMessageWithImages, DataMessage, AIToolRequest,
-                      ToolMessage, Tool, ToolRef
+                       ToolMessage, Tool, ToolRef
 using PromptingTools2: CustomProvider,
-                      CustomOpenAISchema, MistralOpenAISchema, MODEL_EMBEDDING,
-                      MODEL_IMAGE_GENERATION
+                       CustomOpenAISchema, MistralOpenAISchema, MODEL_EMBEDDING,
+                       MODEL_IMAGE_GENERATION
 using PromptingTools2: encode_choices, decode_choices, response_to_message, call_cost,
-                      isextracted, isaitoolrequest, istoolmessage
+                       isextracted, isaitoolrequest, istoolmessage
 using PromptingTools2: pick_tokenizer, OPENAI_TOKEN_IDS_GPT35_GPT4, OPENAI_TOKEN_IDS_GPT4O
 
 @testset "render-OpenAI" begin
@@ -136,16 +136,16 @@ using PromptingTools2: pick_tokenizer, OPENAI_TOKEN_IDS_GPT35_GPT4, OPENAI_TOKEN
     ]
     conversation = render(schema, messages)
     expected_output = Dict{String, Any}[
-    Dict("role" => "system",
-        "content" => "System message 1"),
-    Dict(
-        "role" => "user",
-        "content" => Dict{String, Any}[
-            Dict("text" => "User message", "type" => "text"),
-            Dict(
-                "image_url" => Dict("detail" => "auto",
-                    "url" => "https://example.com/image.png"),
-                "type" => "image_url")])]
+        Dict("role" => "system",
+            "content" => "System message 1"),
+        Dict(
+            "role" => "user",
+            "content" => Dict{String, Any}[
+                Dict("text" => "User message", "type" => "text"),
+                Dict(
+                    "image_url" => Dict("detail" => "auto",
+                        "url" => "https://example.com/image.png"),
+                    "type" => "image_url")])]
     @test conversation == expected_output
 
     # Test with ToolMessage
@@ -157,14 +157,14 @@ using PromptingTools2: pick_tokenizer, OPENAI_TOKEN_IDS_GPT35_GPT4, OPENAI_TOKEN
     ]
     conversation = render(schema, messages)
     expected_output = Dict{String, Any}[
-    Dict(
-        "role" => "system", "content" => "System message"),
-    Dict(
-        "role" => "user", "content" => "User message"),
-    Dict(
-        "role" => "tool", "tool_call_id" => "tool1",
-        "name" => "calculator", "content" => "4+4=8")
-]
+        Dict(
+            "role" => "system", "content" => "System message"),
+        Dict(
+            "role" => "user", "content" => "User message"),
+        Dict(
+            "role" => "tool", "tool_call_id" => "tool1",
+            "name" => "calculator", "content" => "4+4=8")
+    ]
     @test conversation == expected_output
 
     # Test with AIToolRequest
@@ -177,30 +177,30 @@ using PromptingTools2: pick_tokenizer, OPENAI_TOKEN_IDS_GPT35_GPT4, OPENAI_TOKEN
         UserMessage("User message"),
         AIToolRequest(;
             tool_calls = [ToolMessage(;
-            tool_call_id = "call_123",
-            raw = JSON3.write(args),
-            name = "get_weather",
-            args)
-        ])
+                tool_call_id = "call_123",
+                raw = JSON3.write(args),
+                name = "get_weather",
+                args)
+            ])
     ]
     conversation = render(schema, messages)
     expected_output = Dict{String, Any}[
-    Dict(
-        "role" => "system", "content" => "System message"),
-    Dict(
-        "role" => "user", "content" => "User message"),
-    Dict(
-        "role" => "assistant",
-        "content" => nothing,
-        "tool_calls" => [
-            Dict("id" => "call_123",
-            "type" => "function",
-            "function" => Dict(
-                "name" => "get_weather",
-                "arguments" => "{\"location\":\"London\",\"unit\":\"celsius\"}"
-            ))
-        ])
-]
+        Dict(
+            "role" => "system", "content" => "System message"),
+        Dict(
+            "role" => "user", "content" => "User message"),
+        Dict(
+            "role" => "assistant",
+            "content" => nothing,
+            "tool_calls" => [
+                Dict("id" => "call_123",
+                "type" => "function",
+                "function" => Dict(
+                    "name" => "get_weather",
+                    "arguments" => "{\"location\":\"London\",\"unit\":\"celsius\"}"
+                ))
+            ])
+    ]
     @test conversation == expected_output
 
     # With empty tools
@@ -211,13 +211,13 @@ using PromptingTools2: pick_tokenizer, OPENAI_TOKEN_IDS_GPT35_GPT4, OPENAI_TOKEN
     ]
     conversation = render(schema, messages)
     expected_output = Dict{String, Any}[
-    Dict(
-        "role" => "system", "content" => "System message"),
-    Dict(
-        "role" => "user", "content" => "User message"),
-    Dict(
-        "role" => "assistant", "content" => "content")
-]
+        Dict(
+            "role" => "system", "content" => "System message"),
+        Dict(
+            "role" => "user", "content" => "User message"),
+        Dict(
+            "role" => "assistant", "content" => "content")
+    ]
     @test conversation == expected_output
 
     # With a list of images and detail="low"
@@ -231,20 +231,20 @@ using PromptingTools2: pick_tokenizer, OPENAI_TOKEN_IDS_GPT35_GPT4, OPENAI_TOKEN
     ]
     conversation = render(schema, messages; image_detail = "low")
     expected_output = Dict{String, Any}[
-    Dict("role" => "system",
-        "content" => "System message 2"),
-    Dict(
-        "role" => "user",
-        "content" => Dict{String, Any}[
-            Dict("text" => "User message", "type" => "text"),
-            Dict(
-                "image_url" => Dict("detail" => "low",
-                    "url" => "https://example.com/image1.png"),
-                "type" => "image_url"),
-            Dict(
-                "image_url" => Dict("detail" => "low",
-                    "url" => "https://example.com/image2.png"),
-                "type" => "image_url")])]
+        Dict("role" => "system",
+            "content" => "System message 2"),
+        Dict(
+            "role" => "user",
+            "content" => Dict{String, Any}[
+                Dict("text" => "User message", "type" => "text"),
+                Dict(
+                    "image_url" => Dict("detail" => "low",
+                        "url" => "https://example.com/image1.png"),
+                    "type" => "image_url"),
+                Dict(
+                    "image_url" => Dict("detail" => "low",
+                        "url" => "https://example.com/image2.png"),
+                    "type" => "image_url")])]
     @test conversation == expected_output
     # Test with dry_run=true
     messages_alt = [

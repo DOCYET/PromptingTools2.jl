@@ -1,12 +1,12 @@
 using PromptingTools2: TestEchoOpenAISchema, render, OpenAISchema, TracerSchema, SaverSchema
 using PromptingTools2: AIMessage, SystemMessage, AbstractMessage
 using PromptingTools2: UserMessage, UserMessageWithImages, DataMessage, TracerMessage,
-                      AIToolRequest, ToolMessage
+                       AIToolRequest, ToolMessage
 using PromptingTools2: CustomProvider,
-                      CustomOpenAISchema, MistralOpenAISchema, MODEL_EMBEDDING,
-                      MODEL_IMAGE_GENERATION
+                       CustomOpenAISchema, MistralOpenAISchema, MODEL_EMBEDDING,
+                       MODEL_IMAGE_GENERATION
 using PromptingTools2: initialize_tracer, finalize_tracer, isaimessage, istracermessage,
-                      unwrap, meta, AITemplate, render, role4render
+                       unwrap, meta, AITemplate, render, role4render
 
 @testset "role4render-Tracer" begin
     schema = TracerSchema(OpenAISchema())

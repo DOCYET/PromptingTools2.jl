@@ -1,7 +1,7 @@
 using PromptingTools2.Experimental.AgentTools: remove_used_kwargs, truncate_conversation
 using PromptingTools2.Experimental.AgentTools: beta_sample,
-                                              gamma_sample, extract_config,
-                                              unwrap_aicall_args, split_multi_samples
+                                               gamma_sample, extract_config,
+                                               unwrap_aicall_args, split_multi_samples
 
 @testset "remove_used_kwargs" begin
     # Test 1: No overlapping keys

@@ -1,7 +1,7 @@
 using PromptingTools2: StreamCallback, StreamChunk, OpenAIStream, OpenAIResponsesStream,
-                      AnthropicStream, configure_callback!, OllamaStream
+                       AnthropicStream, configure_callback!, OllamaStream
 using PromptingTools2: OpenAISchema, AnthropicSchema, GoogleSchema, OllamaSchema,
-                      OpenAIResponseSchema
+                       OpenAIResponseSchema
 
 @testset "configure_callback!" begin
     # Test configure_callback! method

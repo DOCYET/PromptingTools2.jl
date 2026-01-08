@@ -1,8 +1,8 @@
 using PromptingTools2: SystemMessage, UserMessage, AIMessage, AbstractMessage
 using PromptingTools2: TestEchoOpenAISchema, ConversationMemory
 using PromptingTools2: issystemmessage, isusermessage, isaimessage, last_message,
-                      last_output, register_model!, batch_start_index,
-                      get_last, pprint
+                       last_output, register_model!, batch_start_index,
+                       get_last, pprint
 
 @testset "batch_start_index" begin
     # Test basic batch calculation

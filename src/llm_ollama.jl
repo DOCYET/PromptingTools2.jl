@@ -62,7 +62,8 @@ Extract token usage from an Ollama API response into a standardized TokenUsage s
 Ollama uses `prompt_eval_count` and `eval_count` for token counts.
 Ollama is typically free/local, so cost is always 0.
 """
-function extract_usage(::AbstractOllamaSchema, resp; model_id::String = "", elapsed::Float64 = 0.0)
+function extract_usage(
+        ::AbstractOllamaSchema, resp; model_id::String = "", elapsed::Float64 = 0.0)
     input_tokens = get(resp.response, :prompt_eval_count, 0)
     output_tokens = get(resp.response, :eval_count, 0)
 

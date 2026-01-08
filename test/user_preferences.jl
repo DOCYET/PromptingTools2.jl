@@ -1,5 +1,5 @@
 using PromptingTools2: ModelSpec,
-                      register_model!, MODEL_REGISTRY, MODEL_ALIASES, ModelRegistry
+                       register_model!, MODEL_REGISTRY, MODEL_ALIASES, ModelRegistry
 using PromptingTools2: list_registry, list_aliases
 using PromptingTools2: OpenAISchema, OllamaManagedSchema, set_preferences!, get_preferences
 

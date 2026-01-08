@@ -237,7 +237,8 @@ May include reasoning tokens for o-series models and cache tokens.
 - `usage.input_tokens_details.cached_tokens`: Cached input tokens
 - `usage.output_tokens_details.reasoning_tokens`: Reasoning tokens (o1, o3, gpt-5 models)
 """
-function extract_usage(::AbstractOpenAIResponseSchema, resp; model_id::String = "", elapsed::Float64 = 0.0)
+function extract_usage(
+        ::AbstractOpenAIResponseSchema, resp; model_id::String = "", elapsed::Float64 = 0.0)
     usage_dict = get(resp.response, :usage, Dict())
 
     # Responses API uses different field names than Chat Completions API

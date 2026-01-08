@@ -321,7 +321,7 @@ function aitemplates(query_key::AbstractString;
     query_str = lowercase(query_key)
     found_templates = filter(
         x -> occursin(query_str, lowercase(string(x.name))) ||
-             occursin(query_str, lowercase(string(x.description))),
+            occursin(query_str, lowercase(string(x.description))),
         metadata_store)
     return first(found_templates, limit)
 end
@@ -331,12 +331,12 @@ function aitemplates(query_key::Regex;
         metadata_store::Vector{AITemplateMetadata} = TEMPLATE_METADATA)
     found_templates = filter(
         x -> occursin(query_key,
-                 string(x.name)) ||
-             occursin(query_key,
-                 x.description) ||
-             occursin(query_key,
-                 x.system_preview) ||
-             occursin(query_key, x.user_preview),
+                     string(x.name)) ||
+                 occursin(query_key,
+                     x.description) ||
+                 occursin(query_key,
+                     x.system_preview) ||
+                 occursin(query_key, x.user_preview),
         metadata_store)
     return first(found_templates, limit)
 end

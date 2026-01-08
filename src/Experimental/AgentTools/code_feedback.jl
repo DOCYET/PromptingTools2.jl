@@ -246,9 +246,9 @@ function error_feedback(e::ArgumentError; max_length::Int = 512)
     if !isnothing(pkg)
         for mod in [Base, Main]
             hasproperty(mod, Symbol(pkg)) && (
-                write(io,
-                    "\nExpert Tip: I know that the package $pkg is defined in $(nameof(mod)) module. You MUST use `import $(mod).$(pkg)` to use it.");
-                break)
+            write(io,
+                "\nExpert Tip: I know that the package $pkg is defined in $(nameof(mod)) module. You MUST use `import $(mod).$(pkg)` to use it.");
+            break)
         end
     end
     first(String(take!(io)), max_length)

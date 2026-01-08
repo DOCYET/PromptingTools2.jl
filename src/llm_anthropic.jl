@@ -55,7 +55,8 @@ Extract token usage from an Anthropic API response into a standardized TokenUsag
 
 Extracts input/output tokens, cache read/write tokens, and calculates cost with cache discounts.
 """
-function extract_usage(::AbstractAnthropicSchema, resp; model_id::String = "", elapsed::Float64 = 0.0)
+function extract_usage(
+        ::AbstractAnthropicSchema, resp; model_id::String = "", elapsed::Float64 = 0.0)
     usage_dict = get(resp.response, :usage, Dict())
 
     input_tokens = get(usage_dict, :input_tokens, 0)

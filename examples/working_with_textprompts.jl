@@ -33,9 +33,9 @@ prompts_dir = joinpath(examples_dir, "prompts")
 # =============================================================================
 # Example 1: Basic Integration - Load and format prompts
 # =============================================================================
-println("=" ^ 60)
+println("="^60)
 println("Example 1: Basic Integration")
-println("=" ^ 60)
+println("="^60)
 
 # Load prompt templates from files
 system_template = load_prompt(joinpath(prompts_dir, "expert_system.txt"))
@@ -58,9 +58,9 @@ println("  UserMessage: ", user_msg.content)
 # =============================================================================
 # Example 2: One-liner with Piping
 # =============================================================================
-println("\n" * "=" ^ 60)
+println("\n" * "="^60)
 println("Example 2: One-liner with Piping")
-println("=" ^ 60)
+println("="^60)
 
 # Elegant one-liner pattern for creating message arrays
 messages = [
@@ -78,9 +78,9 @@ end
 # =============================================================================
 # Example 3: Dynamic Prompt Selection
 # =============================================================================
-println("\n" * "=" ^ 60)
+println("\n" * "="^60)
 println("Example 3: Dynamic Prompt Selection")
-println("=" ^ 60)
+println("="^60)
 
 # Load all templates from directory and index by title
 all_templates = load_prompts(prompts_dir)
@@ -102,9 +102,9 @@ end
 # =============================================================================
 # Example 4: Working with Prompt Strings Directly
 # =============================================================================
-println("\n" * "=" ^ 60)
+println("\n" * "="^60)
 println("Example 4: Working with Prompt Strings Directly")
-println("=" ^ 60)
+println("="^60)
 
 # Create a prompt from a string (no file needed) - useful for quick prototyping
 inline_prompt = from_string("""
@@ -122,9 +122,9 @@ println("Formatted: ", formatted)
 # =============================================================================
 # Example 5: Metadata Modes
 # =============================================================================
-println("\n" * "=" ^ 60)
+println("\n" * "="^60)
 println("Example 5: Metadata Modes")
-println("=" ^ 60)
+println("="^60)
 
 # IGNORE mode - treat file as plain text, use filename as title
 ignored = load_prompt(joinpath(prompts_dir, "expert_system.txt"); meta = :ignore)
@@ -135,9 +135,9 @@ println("  Content includes TOML header: ", startswith(ignored.content, "---"))
 # =============================================================================
 # Example 6: Calling the LLM (uncomment to run with API key)
 # =============================================================================
-println("\n" * "=" ^ 60)
+println("\n" * "="^60)
 println("Example 6: Calling the LLM")
-println("=" ^ 60)
+println("="^60)
 
 println("\nTo call the LLM, uncomment the code below.")
 println("Make sure you have OPENAI_API_KEY set in your environment.")
@@ -149,9 +149,9 @@ println("Make sure you have OPENAI_API_KEY set in your environment.")
 # =============================================================================
 # Cross-Language Compatibility
 # =============================================================================
-println("\n" * "=" ^ 60)
+println("\n" * "="^60)
 println("Cross-Language Compatibility")
-println("=" ^ 60)
+println("="^60)
 
 println("""
 The same prompt files work across languages:
@@ -170,6 +170,6 @@ The same prompt files work across languages:
 This enables teams to share prompts across different codebases!
 """)
 
-println("=" ^ 60)
+println("="^60)
 println("Done! See the prompts/ folder for example prompt files.")
-println("=" ^ 60)
+println("="^60)

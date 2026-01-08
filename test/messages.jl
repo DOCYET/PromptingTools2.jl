@@ -1,13 +1,13 @@
 using PromptingTools2: AIMessage, SystemMessage, MetadataMessage, AbstractMessage
 using PromptingTools2: UserMessage, UserMessageWithImages, DataMessage, AIToolRequest,
-                      ToolMessage, AnnotationMessage
+                       ToolMessage, AnnotationMessage
 using PromptingTools2: _encode_local_image, attach_images_to_user_message, last_message,
-                      last_output, tool_calls
+                       last_output, tool_calls
 using PromptingTools2: isusermessage, issystemmessage, isdatamessage, isaimessage,
-                      istracermessage, isaitoolrequest, istoolmessage,
-                      isabstractannotationmessage
+                       istracermessage, isaitoolrequest, istoolmessage,
+                       isabstractannotationmessage
 using PromptingTools2: TracerMessageLike, TracerMessage, align_tracer!, unwrap,
-                      AbstractTracerMessage, AbstractTracer, pprint, annotate!
+                       AbstractTracerMessage, AbstractTracer, pprint, annotate!
 using PromptingTools2: TracerSchema, SaverSchema
 
 @testset "Message constructors" begin

@@ -1,9 +1,9 @@
 using PromptingTools2: TestEchoAnthropicSchema, render, AnthropicSchema
 using PromptingTools2: AIMessage, SystemMessage, AbstractMessage
 using PromptingTools2: UserMessage, UserMessageWithImages, DataMessage, AIToolRequest,
-                      ToolMessage, Tool
+                       ToolMessage, Tool
 using PromptingTools2: call_cost, anthropic_api, function_call_signature,
-                      anthropic_extra_headers, ToolRef, BETA_HEADERS_ANTHROPIC
+                       anthropic_extra_headers, ToolRef, BETA_HEADERS_ANTHROPIC
 
 @testset "render-Anthropic" begin
     schema = AnthropicSchema()
@@ -979,7 +979,8 @@ end
 
     schema3 = TestEchoAnthropicSchema(; response = response_tools, status = 200)
     msg3 = aitools(schema3, "What's the weather?";
-        tools = [Tool(; name = "get_weather", callable = AnthropicObservabilityWeatherTool)],
+        tools = [Tool(;
+            name = "get_weather", callable = AnthropicObservabilityWeatherTool)],
         model = "claudes")
 
     @test msg3 isa AIToolRequest

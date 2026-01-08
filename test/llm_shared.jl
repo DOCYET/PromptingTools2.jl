@@ -1,7 +1,7 @@
 using PromptingTools2: render, NoSchema, AbstractPromptSchema, OpenAISchema
 using PromptingTools2: AIMessage, SystemMessage, AbstractMessage, AbstractChatMessage
 using PromptingTools2: UserMessage, UserMessageWithImages, DataMessage, AIToolRequest,
-                      ToolMessage, ToolRef
+                       ToolMessage, ToolRef
 using PromptingTools2: finalize_outputs, role4render
 
 @testset "render-NoSchema" begin

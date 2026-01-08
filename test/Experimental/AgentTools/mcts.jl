@@ -1,10 +1,11 @@
-using PromptingTools2.Experimental.AgentTools: expand!, find_node, backpropagate!, SampleNode
+using PromptingTools2.Experimental.AgentTools: expand!, find_node, backpropagate!,
+                                               SampleNode
 using PromptingTools2.Experimental.AgentTools: print_tree,
-                                              print_samples, reset_success!,
-                                              collect_all_feedback
+                                               print_samples, reset_success!,
+                                               collect_all_feedback
 using PromptingTools2.Experimental.AgentTools: score,
-                                              UCT, ThompsonSampling,
-                                              AbstractScoringMethod, select_best
+                                               UCT, ThompsonSampling,
+                                               AbstractScoringMethod, select_best
 
 @testset "SampleNode,expand!,find_node,reset_success!,print_samples" begin
     data = PT.AbstractMessage[]

@@ -331,7 +331,8 @@ end
                 cachedContentTokenCount = 30
             )
         )
-        usage = PT.extract_usage(PT.GoogleSchema(), resp; model_id = "gemini-pro", elapsed = 1.5)
+        usage = PT.extract_usage(
+            PT.GoogleSchema(), resp; model_id = "gemini-pro", elapsed = 1.5)
         @test usage.input_tokens == 100
         @test usage.output_tokens == 50
         @test usage.cache_read_tokens == 30

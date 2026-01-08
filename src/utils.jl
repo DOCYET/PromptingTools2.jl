@@ -294,7 +294,6 @@ function length_longest_common_subsequence(itr1::AbstractString, itr2::AbstractS
     dp = fill(0, m, n)
 
     for (i, x) in enumerate(itr1), (j, y) in enumerate(itr2)
-
         dp[i + 1, j + 1] = (x == y) ? (dp[i, j] + 1) :
                            max(dp[i, j + 1], dp[i + 1, j])
     end

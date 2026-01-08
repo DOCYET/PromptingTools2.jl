@@ -2,7 +2,7 @@ using PromptingTools2: TestEchoOpenAISchema, render, OpenAISchema
 using PromptingTools2: AIMessage, SystemMessage, AbstractMessage
 using PromptingTools2: UserMessage, UserMessageWithImages, DataMessage
 using PromptingTools2: response_to_message, AbstractPromptSchema, isextracted,
-                      AbstractExtractedData
+                       AbstractExtractedData
 
 @testset "ai* default schema" begin
     OLD_PROMPT_SCHEMA = PromptingTools2.PROMPT_SCHEMA

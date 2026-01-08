@@ -67,7 +67,8 @@ Extract token usage from an OpenAI API response into a standardized TokenUsage s
 Handles both snake_case and camelCase keys for compatibility with various OpenAI-compatible APIs.
 Extracts cache tokens, reasoning tokens, and audio tokens when available.
 """
-function extract_usage(::AbstractOpenAISchema, resp; model_id::String = "", elapsed::Float64 = 0.0)
+function extract_usage(
+        ::AbstractOpenAISchema, resp; model_id::String = "", elapsed::Float64 = 0.0)
     usage_dict = get(resp.response, :usage, Dict())
 
     # Core tokens (handle both snake_case and camelCase)

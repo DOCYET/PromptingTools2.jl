@@ -1,10 +1,10 @@
 using Test
 using PromptingTools2
 using PromptingTools2: TokenUsage, total_tokens, extract_usage, call_cost_with_cache,
-                      get_cache_discounts, build_message, extract_log_prob,
-                      CACHE_DISCOUNTS, call_cost, AIMessage, DataMessage, AIToolRequest,
-                      ToolMessage, OpenAISchema, AnthropicSchema, OllamaSchema,
-                      GoogleOpenAISchema, OpenAIResponseSchema
+                       get_cache_discounts, build_message, extract_log_prob,
+                       CACHE_DISCOUNTS, call_cost, AIMessage, DataMessage, AIToolRequest,
+                       ToolMessage, OpenAISchema, AnthropicSchema, OllamaSchema,
+                       GoogleOpenAISchema, OpenAIResponseSchema
 
 @testset "TokenUsage" begin
     @testset "Construction and defaults" begin
@@ -53,7 +53,8 @@ using PromptingTools2: TokenUsage, total_tokens, extract_usage, call_cost_with_c
     end
 
     @testset "Display" begin
-        usage = TokenUsage(input_tokens = 100, output_tokens = 50, cache_read_tokens = 30, cost = 0.001)
+        usage = TokenUsage(
+            input_tokens = 100, output_tokens = 50, cache_read_tokens = 30, cost = 0.001)
         io = IOBuffer()
         show(io, usage)
         str = String(take!(io))
@@ -68,7 +69,8 @@ end
     @testset "Schema-based lookup (Priority 1 & 2)" begin
         # Priority 1: Explicit schema parameter
         @test get_cache_discounts("any-model"; schema = OpenAISchema()).read_discount == 0.5
-        @test get_cache_discounts("any-model"; schema = GoogleOpenAISchema()).read_discount ==
+        @test get_cache_discounts(
+            "any-model"; schema = GoogleOpenAISchema()).read_discount ==
               0.9
         @test get_cache_discounts("any-model"; schema = AnthropicSchema()).read_discount ==
               0.9
@@ -107,7 +109,8 @@ end
         @test discounts.write_premium == 0.0
 
         # CustomOpenAISchema (unknown provider) defaults to 0%
-        @test get_cache_discounts("custom"; schema = PromptingTools2.CustomOpenAISchema()).read_discount ==
+        @test get_cache_discounts(
+            "custom"; schema = PromptingTools2.CustomOpenAISchema()).read_discount ==
               0.0
     end
 

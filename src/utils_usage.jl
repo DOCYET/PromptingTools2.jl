@@ -57,7 +57,8 @@ get_cache_discounts("claude-sonnet-4")       # (read_discount = 0.9, write_premi
 get_cache_discounts("unknown-model")         # (read_discount = 0.0, write_premium = 0.0)
 ```
 """
-function get_cache_discounts(model_id::String; schema::Union{Nothing, AbstractPromptSchema} = nothing)
+function get_cache_discounts(
+        model_id::String; schema::Union{Nothing, AbstractPromptSchema} = nothing)
     # Priority 1: Explicit schema provided
     if !isnothing(schema)
         discount = _lookup_schema_type(schema)
@@ -105,6 +106,7 @@ A `TokenUsage` struct with normalized token counts and calculated cost.
 function extract_usage end
 
 # Fallback for unknown schemas
-function extract_usage(::AbstractPromptSchema, resp; model_id::String = "", elapsed::Float64 = 0.0)
+function extract_usage(
+        ::AbstractPromptSchema, resp; model_id::String = "", elapsed::Float64 = 0.0)
     TokenUsage(; model_id, elapsed)
 end

@@ -1,8 +1,8 @@
 using PromptingTools2: isabstractannotationmessage, annotate!, pprint
 using PromptingTools2: OpenAISchema, AnthropicSchema, OllamaSchema, GoogleSchema,
-                      TestEchoOpenAISchema, render, NoSchema
+                       TestEchoOpenAISchema, render, NoSchema
 using PromptingTools2: AnnotationMessage, SystemMessage, TracerMessage, UserMessage,
-                      AIMessage
+                       AIMessage
 
 @testset "Annotation Message Rendering" begin
     # Create a mix of messages including annotation messages
