@@ -1,0 +1,19 @@
+*.jl.*.cov
+*.jl.cov
+*.jl.mem
+/Manifest.toml
+/docs/Manifest.toml
+/docs/build/
+
+**/.DS_Store
+**/.vscode
+
+# exclude scratch files
+**/_*
+docs/package-lock.json
+
+# Ignore Cursor rules
+.cursorrules
+
+# Ignore any local preferences
+**/LocalPreferences.toml
