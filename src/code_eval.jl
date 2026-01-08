@@ -26,10 +26,10 @@ abstract type AbstractCodeBlock end
 
 A mutable structure representing a code block (received from the AI model) with automatic parsing, execution, and output/error capturing capabilities.
 
-Upon instantiation with a string, the `AICode` object automatically runs a code parser and executor (via `PromptingTools.eval!()`), capturing any standard output (`stdout`) or errors. 
+Upon instantiation with a string, the `AICode` object automatically runs a code parser and executor (via `PromptingTools2.eval!()`), capturing any standard output (`stdout`) or errors. 
 This structure is useful for programmatically handling and evaluating Julia code snippets.
 
-See also: `PromptingTools.extract_code_blocks`, `PromptingTools.eval!`
+See also: `PromptingTools2.extract_code_blocks`, `PromptingTools2.eval!`
 
 # Workflow
 - Until `cb::AICode` has been evaluated, `cb.success` is set to `nothing` (and so are all other fields).
@@ -297,9 +297,9 @@ function eval!(cb::AbstractCodeBlock;
     _transform = if expression_transform == :nothing
         "identity"
     elseif expression_transform == :remove_all_tests
-        "PromptingTools.remove_all_tests_from_expr!"
+        "PromptingTools2.remove_all_tests_from_expr!"
     elseif expression_transform == :remove_test_items
-        "PromptingTools.remove_test_items_from_expr!"
+        "PromptingTools2.remove_test_items_from_expr!"
     end
 
     ## Add prefix and suffix
@@ -307,7 +307,7 @@ function eval!(cb::AbstractCodeBlock;
     io = IOBuffer()
     module_name = safe_eval ? replace(string(gensym("SafeMod")), "#" => "") : "Main"
     safe_eval && write(io, "module $module_name\n")
-    write(io, "using Test\nimport PromptingTools\n")
+    write(io, "using Test\nimport PromptingTools2\n")
     write(io, prefix, "\n")
     write(io,
         "include_string($_transform, $module_name,\"\"\"$(escape_string(code,'$'))\"\"\", \"__code_string_eval\")\n")

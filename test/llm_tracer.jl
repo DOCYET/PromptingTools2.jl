@@ -1,11 +1,11 @@
-using PromptingTools: TestEchoOpenAISchema, render, OpenAISchema, TracerSchema, SaverSchema
-using PromptingTools: AIMessage, SystemMessage, AbstractMessage
-using PromptingTools: UserMessage, UserMessageWithImages, DataMessage, TracerMessage,
+using PromptingTools2: TestEchoOpenAISchema, render, OpenAISchema, TracerSchema, SaverSchema
+using PromptingTools2: AIMessage, SystemMessage, AbstractMessage
+using PromptingTools2: UserMessage, UserMessageWithImages, DataMessage, TracerMessage,
                       AIToolRequest, ToolMessage
-using PromptingTools: CustomProvider,
+using PromptingTools2: CustomProvider,
                       CustomOpenAISchema, MistralOpenAISchema, MODEL_EMBEDDING,
                       MODEL_IMAGE_GENERATION
-using PromptingTools: initialize_tracer, finalize_tracer, isaimessage, istracermessage,
+using PromptingTools2: initialize_tracer, finalize_tracer, isaimessage, istracermessage,
                       unwrap, meta, AITemplate, render, role4render
 
 @testset "role4render-Tracer" begin

@@ -1,11 +1,11 @@
-using PromptingTools.Experimental.AgentTools: aicodefixer_feedback
-using PromptingTools.Experimental.AgentTools: CodeEmpty,
+using PromptingTools2.Experimental.AgentTools: aicodefixer_feedback
+using PromptingTools2.Experimental.AgentTools: CodeEmpty,
                                               CodeFailedParse, CodeFailedEval,
                                               CodeFailedTimeout, CodeSuccess
-using PromptingTools.Experimental.AgentTools: testset_feedback,
+using PromptingTools2.Experimental.AgentTools: testset_feedback,
                                               error_feedback, score_feedback,
                                               extract_test_counts
-using PromptingTools.Experimental.AgentTools: AIGenerate
+using PromptingTools2.Experimental.AgentTools: AIGenerate
 
 @testset "aicodefixer_feedback" begin
     # Empty code

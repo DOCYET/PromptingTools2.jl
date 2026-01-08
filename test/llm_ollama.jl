@@ -1,6 +1,6 @@
-using PromptingTools: TestEchoOllamaSchema, render, OllamaSchema, ollama_api
-using PromptingTools: AIMessage, SystemMessage, AbstractMessage
-using PromptingTools: UserMessage, UserMessageWithImages, DataMessage, _encode_local_image
+using PromptingTools2: TestEchoOllamaSchema, render, OllamaSchema, ollama_api
+using PromptingTools2: AIMessage, SystemMessage, AbstractMessage
+using PromptingTools2: UserMessage, UserMessageWithImages, DataMessage, _encode_local_image
 
 @testset "render-Ollama" begin
     schema = OllamaSchema()

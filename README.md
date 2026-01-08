@@ -1,43 +1,30 @@
-# PromptingTools2.jl: "Your Daily Dose of AI Efficiency."
+# PromptingTools2.jl
 
-[![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://svilupp.github.io/PromptingTools.jl/stable/)
-[![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://svilupp.github.io/PromptingTools.jl/dev/)
-[![Slack](https://img.shields.io/badge/slack-%23generative--ai-brightgreen.svg?logo=slack)](https://julialang.slack.com/archives/C06G90C697X)
-[![Build Status](https://github.com/svilupp/PromptingTools.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/svilupp/PromptingTools.jl/actions/workflows/CI.yml?query=branch%3Amain)
-[![Coverage](https://codecov.io/gh/svilupp/PromptingTools.jl/branch/main/graph/badge.svg)](https://codecov.io/gh/svilupp/PromptingTools.jl)
 [![Aqua](https://raw.githubusercontent.com/JuliaTesting/Aqua.jl/master/badge.svg)](https://github.com/JuliaTesting/Aqua.jl)
 [![SciML Code Style](https://img.shields.io/static/v1?label=code%20style&message=SciML&color=9558b2&labelColor=389826)](https://github.com/SciML/SciMLStyle)
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/svilupp/PromptingTools.jl)
 
-Streamline your life using PromptingTools.jl, the Julia package that simplifies interacting with large language models.
+> **Note:** PromptingTools2.jl is an independent package based on [PromptingTools.jl](https://github.com/svilupp/PromptingTools.jl) by [@svilupp](https://github.com/svilupp). This package is maintained separately for commercial use by DOCYET.
 
-PromptingTools.jl is not meant for building large-scale systems. It's meant to be the go-to tool in your global environment that will save you 20 minutes every day!
-
-> [!IMPORTANT]  
-> **RAGTools Migration Notice**  
-> RAG (Retrieval-Augmented Generation) functionality has moved to the dedicated [RAGTools.jl](https://github.com/JuliaGenAI/RAGTools.jl) package. If you're using `PromptingTools.Experimental.RAGTools`, please migrate to `RAGTools.jl`. The API remains the same - just change your imports from `using PromptingTools.Experimental.RAGTools` to `using RAGTools`.
-
-> [!TIP]
-> Jump to the **[docs](https://svilupp.github.io/PromptingTools.jl/dev/)**
+Streamline your life using PromptingTools2.jl, the Julia package that simplifies interacting with large language models.
 
 ## Quick Start with `@ai_str` and Easy Templating
 
-Getting started with PromptingTools.jl is as easy as importing the package and using the `@ai_str` macro for your questions.
+Getting started with PromptingTools2.jl is as easy as importing the package and using the `@ai_str` macro for your questions.
 
-Note: You will need to set your OpenAI API key as an environment variable before using PromptingTools.jl (see the [Creating OpenAI API Key](#creating-openai-api-key) section below).
+Note: You will need to set your OpenAI API key as an environment variable before using PromptingTools2.jl (see the [Creating OpenAI API Key](#creating-openai-api-key) section below).
 
 Following the introduction of [Prepaid Billing](https://help.openai.com/en/articles/8264644-what-is-prepaid-billing), you'll need to buy some credits to get started ($5 minimum).
 For a quick start, simply set it via `ENV["OPENAI_API_KEY"] = "your-api-key"`
 
-Install PromptingTools:
+Install PromptingTools2:
 ```julia
 using Pkg
-Pkg.add("PromptingTools")
+Pkg.add("PromptingTools2")
 ```
 
 And we're ready to go!
 ```julia
-using PromptingTools
+using PromptingTools2
 
 ai"What is the capital of France?"
 # [ Info: Tokens: 31 @ Cost: $0.0 in 1.5 seconds --> Be in control of your spending! 
@@ -85,7 +72,7 @@ For more practical examples, see the `examples/` folder and the [Advanced Exampl
 - [PromptingTools2.jl: "Your Daily Dose of AI Efficiency."](#promptingtools2jl-your-daily-dose-of-ai-efficiency)
   - [Quick Start with `@ai_str` and Easy Templating](#quick-start-with-ai_str-and-easy-templating)
   - [Table of Contents](#table-of-contents)
-  - [Why PromptingTools.jl](#why-promptingtoolsjl)
+  - [Why PromptingTools2.jl](#why-promptingtoolsjl)
   - [Advanced Examples](#advanced-examples)
     - [`ai*` Functions Overview](#ai-functions-overview)
     - [Seamless Integration Into Your Workflow](#seamless-integration-into-your-workflow)
@@ -122,11 +109,10 @@ For more practical examples, see the `examples/` folder and the [Advanced Exampl
     - [Open Source Alternatives](#open-source-alternatives)
     - [Setup Guide for Ollama](#setup-guide-for-ollama)
     - [How would I fine-tune a model?](#how-would-i-fine-tune-a-model)
-  - [Roadmap](#roadmap)
 
-## Why PromptingTools.jl
+## Why PromptingTools2.jl
 
-Prompt engineering is neither fast nor easy. Moreover, different models and their fine-tunes might require different prompt formats and tricks, or perhaps the information you work with requires special models to be used. PromptingTools.jl is meant to unify the prompts for different backends and make the common tasks (like templated prompts) as simple as possible. 
+Prompt engineering is neither fast nor easy. Moreover, different models and their fine-tunes might require different prompt formats and tricks, or perhaps the information you work with requires special models to be used. PromptingTools2.jl is meant to unify the prompts for different backends and make the common tasks (like templated prompts) as simple as possible. 
 
 Some features:
 - **`aigenerate` Function**: Simplify prompt templates with handlebars (eg, `{{variable}}`) and keyword arguments
@@ -171,7 +157,7 @@ Optional keyword arguments in `ai*` tend to be:
 
 In addition to the above list of `ai*` functions, you can also use the **"lazy" counterparts** of these functions from the experimental AgentTools module.
 ```julia
-using PromptingTools.Experimental.AgentTools
+using PromptingTools2.Experimental.AgentTools
 ```
 
 For example, `AIGenerate()` will create a lazy instance of `aigenerate`. It is an instance of `AICall` with `aigenerate` as its ai function.
@@ -221,7 +207,7 @@ msg = aigenerate("Say hello to {{name}}!", name="World")
 The more complex prompts are effectively a conversation (a set of messages), where you can have messages from three entities: System, User, AIAssistant. We provide the corresponding types for each of them: `SystemMessage`, `UserMessage`, `AIMessage`. 
 
 ```julia
-using PromptingTools: SystemMessage, UserMessage
+using PromptingTools2: SystemMessage, UserMessage
 
 conversation = [
     SystemMessage("You're master Yoda from Star Wars trying to help the user become a Jedi."),
@@ -259,7 +245,7 @@ Find available templates with `aitemplates`:
 tmps = aitemplates("JuliaExpertAsk")
 # Will surface one specific template
 # 1-element Vector{AITemplateMetadata}:
-# PromptingTools.AITemplateMetadata
+# PromptingTools2.AITemplateMetadata
 #   name: Symbol JuliaExpertAsk
 #   description: String "For asking questions about Julia language. Placeholders: `ask`"
 #   version: String "1"
@@ -288,7 +274,7 @@ I have my selected template, how do I use it? Just use the "name" in `aigenerate
 
 You can inspect any template by "rendering" it (this is what the LLM will see):
 ```julia
-julia> AITemplate(:JudgeIsItTrue) |> PromptingTools.render
+julia> AITemplate(:JudgeIsItTrue) |> PromptingTools2.render
 ```
 
 See more examples in the [examples/](examples/) folder.
@@ -311,7 +297,7 @@ Certain tasks require more powerful models. All user-facing functions have a key
 
 We offer a set of model aliases (eg, "gpt3", "gpt4", "gpt4t" -> the above GPT-4 Turbo, etc.) that can be used instead. 
 
-Each `ai...` call first looks up the provided model name in the dictionary `PromptingTools.MODEL_ALIASES`, so you can easily extend with your own aliases! 
+Each `ai...` call first looks up the provided model name in the dictionary `PromptingTools2.MODEL_ALIASES`, so you can easily extend with your own aliases! 
 
 ```julia
 const PT = PromptingTools
@@ -428,7 +414,7 @@ msg.content.measurements
 #  MyMeasurement(19, 190, nothing)
 ```
 
-There is even a wrapper to help you catch errors together with helpful explanations on why parsing failed. See `?PromptingTools.MaybeExtract` for more information.
+There is even a wrapper to help you catch errors together with helpful explanations on why parsing failed. See `?PromptingTools2.MaybeExtract` for more information.
 
 ### OCR and Image Comprehension
 
@@ -464,7 +450,7 @@ msg.content |> Markdown.parse
 
 This is an experimental feature, so you have to import it explicitly:
 ```julia
-using PromptingTools.Experimental.AgentTools
+using PromptingTools2.Experimental.AgentTools
 ```
 
 This module offers "lazy" counterparts to the `ai...` functions, so you can use them in a more controlled way, eg, `aigenerate` -> `AIGenerate` (notice the CamelCase), which has exactly the same arguments except it generates only when `run!` is called.
@@ -562,13 +548,13 @@ If you're getting errors, check that Ollama is running - see the [Setup Guide fo
 
 ### Using MistralAI API and other OpenAI-compatible APIs
 
-Mistral models have long been dominating the open-source space. They are now available via their API, so you can use them with PromptingTools.jl!
+Mistral models have long been dominating the open-source space. They are now available via their API, so you can use them with PromptingTools2.jl!
 
 ```julia
 msg = aigenerate("Say hi!"; model="mistral-tiny")
 ```
 
-It all just works, because we have registered the models in the `PromptingTools.MODEL_REGISTRY`! There are currently 4 models available: `mistral-tiny`, `mistral-small`, `mistral-medium`, `mistral-embed`.
+It all just works, because we have registered the models in the `PromptingTools2.MODEL_REGISTRY`! There are currently 4 models available: `mistral-tiny`, `mistral-small`, `mistral-medium`, `mistral-embed`.
 
 Under the hood, we use a dedicated schema `MistralOpenAISchema` that leverages most of the OpenAI-specific code base, so you can always provide that explicitly as the first argument:
 
@@ -579,7 +565,7 @@ msg = aigenerate(PT.MistralOpenAISchema(), "Say Hi!"; model="mistral-tiny", api_
 As you can see, we can load your API key either from the ENV or via the Preferences.jl mechanism (see `?PREFERENCES` for more information).
 
 But MistralAI are not the only ones! There are many other exciting providers, eg, [Perplexity.ai](https://docs.perplexity.ai/), [Fireworks.ai](https://app.fireworks.ai/).
-As long as they are compatible with the OpenAI API (eg, sending `messages` with `role` and `content` keys), you can use them with PromptingTools.jl by using `schema = CustomOpenAISchema()`:
+As long as they are compatible with the OpenAI API (eg, sending `messages` with `role` and `content` keys), you can use them with PromptingTools2.jl by using `schema = CustomOpenAISchema()`:
 
 ```julia
 # Set your API key and the necessary base URL for the API
@@ -594,7 +580,7 @@ Note: At the moment, we only support `aigenerate` and `aiembed` functions for Mi
 
 ### Using OpenAI Responses API
 
-PromptingTools.jl supports OpenAI's **Responses API** (`/responses` endpoint) in addition to the traditional Chat Completions API. The Responses API offers several advantages for agentic workflows and reasoning models:
+PromptingTools2.jl supports OpenAI's **Responses API** (`/responses` endpoint) in addition to the traditional Chat Completions API. The Responses API offers several advantages for agentic workflows and reasoning models:
 
 **Key Benefits:**
 - **Server-side state management**: No need to send full conversation history with each request
@@ -635,7 +621,7 @@ msg = aigenerate(schema, "Count from 1 to 10, one number per line.";
 - **Chat Completions API** (default): Straightforward conversations, established integrations, maximum compatibility
 - **Responses API**: Complex agent workflows, tool use, reasoning models, state-heavy applications
 
-See the [FAQ](https://svilupp.github.io/PromptingTools.jl/dev/frequently_asked_questions/#Why-use-the-Responses-API-instead-of-Chat-Completions?) for more details.
+See the [FAQ](https://svilupp.github.io/PromptingTools2.jl/dev/frequently_asked_questions/#Why-use-the-Responses-API-instead-of-Chat-Completions?) for more details.
 
 ### Using Anthropic Models
 
@@ -663,7 +649,7 @@ msg = aigenerate(
 
 ### Companion Packages: Logfire.jl & TextPrompts.jl
 
-PromptingTools.jl integrates with two companion packages that provide observability and prompt management capabilities. Both packages are part of a **cross-language ecosystem** - the same tools and prompt files work with Python and TypeScript, enabling teams to share infrastructure across different codebases.
+PromptingTools2.jl integrates with two companion packages that provide observability and prompt management capabilities. Both packages are part of a **cross-language ecosystem** - the same tools and prompt files work with Python and TypeScript, enabling teams to share infrastructure across different codebases.
 
 #### Observability with Logfire.jl
 
@@ -691,7 +677,7 @@ Logfire.configure(service_name = "my-app")
 # 2. Instrument all registered models - wraps them with tracing schema
 Logfire.instrument_promptingtools!()
 
-# 3. Use PromptingTools as normal - traces are automatic!
+# 3. Use PromptingTools2 as normal - traces are automatic!
 aigenerate("What is 2 + 2?"; model = "gpt4om")
 ```
 
@@ -764,7 +750,7 @@ Combine both packages for a complete LLM development workflow:
 4. **Iterate and improve** prompts based on real-world data
 
 ```julia
-using TextPrompts, PromptingTools, Logfire
+using TextPrompts, PromptingTools2, Logfire
 
 Logfire.configure(service_name = "my-app")
 Logfire.instrument_promptingtools!()
@@ -813,7 +799,7 @@ Given a prompt schema and one or more message, you can `render` the resulting ob
 Eg, for OpenAI 
 
 ```julia
-using PromptingTools: render, SystemMessage, UserMessage
+using PromptingTools2: render, SystemMessage, UserMessage
 PT = PromptingTools
 
 schema = PT.OpenAISchema() # also accessible as the default schema `PT.PROMPT_SCHEMA`
@@ -921,7 +907,7 @@ Resources:
 
 This is a guide for OpenAI's API key, but it works for any other API key you might need (eg, `MISTRAL_API_KEY` for MistralAI API).
 
-To use the OpenAI API with PromptingTools.jl, set your API key as an environment variable:
+To use the OpenAI API with PromptingTools2.jl, set your API key as an environment variable:
 
 ```julia
 ENV["OPENAI_API_KEY"] = "your-api-key"
@@ -938,8 +924,8 @@ A better way:
 - On a Mac, add the configuration line to your terminal's configuration file (eg, `~/.zshrc`). It will get automatically loaded every time you launch the terminal
 - On Windows, set it as a system variable in "Environment Variables" settings (see the Resources)
 
-We also support Preferences.jl, so you can simply run: `PromptingTools.set_preferences!("OPENAI_API_KEY"=>"your-api-key")` and it will be persisted across sessions. 
-To see the current preferences, run `PromptingTools.get_preferences("OPENAI_API_KEY")`.
+We also support Preferences.jl, so you can simply run: `PromptingTools2.set_preferences!("OPENAI_API_KEY"=>"your-api-key")` and it will be persisted across sessions. 
+To see the current preferences, run `PromptingTools2.get_preferences("OPENAI_API_KEY")`.
 
 Be careful NOT TO COMMIT `LocalPreferences.toml` to GitHub, as it would show your API Key to the world!
 
@@ -953,19 +939,19 @@ See [OpenAI API reference](https://platform.openai.com/docs/guides/text-generati
 
 ### Instant Access from Anywhere
 
-For easy access from anywhere, add PromptingTools into your `startup.jl` (can be found in `~/.julia/config/startup.jl`).
+For easy access from anywhere, add PromptingTools2 into your `startup.jl` (can be found in `~/.julia/config/startup.jl`).
 
 Add the following snippet:
 ```
-using PromptingTools
-const PT = PromptingTools # to access unexported functions and types
+using PromptingTools2
+const PT = PromptingTools2 # to access unexported functions and types
 ```
 
 Now, you can just use `ai"Help me do X to achieve Y"` from any REPL session!
 
 ### Open Source Alternatives
 
-The ethos of PromptingTools.jl is to allow you to use whatever model you want, which includes Open Source LLMs. The most popular and easiest to setup is [Ollama.ai](https://ollama.ai/) - see below for more information.
+The ethos of PromptingTools2.jl is to allow you to use whatever model you want, which includes Open Source LLMs. The most popular and easiest to setup is [Ollama.ai](https://ollama.ai/) - see below for more information.
 
 ### Setup Guide for Ollama
 
@@ -988,7 +974,7 @@ See [Ollama.ai](https://ollama.ai/) for more information.
 
 ### How would I fine-tune a model?
 
-Fine-tuning is a powerful technique to adapt a model to your specific use case (mostly the format/syntax/task). It requires a dataset of examples, which you can now easily generate with PromptingTools.jl!
+Fine-tuning is a powerful technique to adapt a model to your specific use case (mostly the format/syntax/task). It requires a dataset of examples, which you can now easily generate with PromptingTools2.jl!
 
 1. You can save any conversation (vector of messages) to a file with `PT.save_conversation("filename.json", conversation)`.
 
@@ -996,22 +982,3 @@ Fine-tuning is a powerful technique to adapt a model to your specific use case (
 
 For an example of an end-to-end finetuning process, check out our sister project [JuliaLLMLeaderboard Finetuning experiment](https://github.com/svilupp/Julia-LLM-Leaderboard/blob/main/experiments/cheater-7b-finetune/README.md). It shows the process of finetuning for half a dollar with [Jarvislabs.ai](https://jarvislabs.ai/templates/axolotl) and [Axolotl](https://github.com/OpenAccess-AI-Collective/axolotl).
 
-## Roadmap
-
-This is a list of features that I'd like to see in the future (in no particular order):
-- Document more mini-tasks, add tutorials
-- Integration of new OpenAI capabilities (eg, audio, assistants -> Imagine a function you send a Plot to and it will add code to add titles, labels, etc. and generate insights for your report!)
-- Add Preferences.jl mechanism to set defaults and persist them across sessions
-- More templates for common tasks (eg, fact-checking, sentiment analysis, extraction of entities/metadata, etc.)
-- Ability to easily add new templates, save them, and share them with others
-- Ability to easily trace and serialize the prompts & AI results for finetuning or evaluation in the future
-- Add multi-turn conversations if you need to "reply" to the AI assistant
-
-
-For more information, contributions, or questions, please visit the [PromptingTools.jl GitHub repository](https://github.com/svilupp/PromptingTools.jl).
-
-Please note that while PromptingTools.jl aims to provide a smooth experience, it relies on external APIs which may change. Stay tuned to the repository for updates and new features.
-
----
-
-Thank you for choosing PromptingTools.jl to empower your applications with AI!

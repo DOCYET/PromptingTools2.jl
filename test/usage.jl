@@ -1,6 +1,6 @@
 using Test
-using PromptingTools
-using PromptingTools: TokenUsage, total_tokens, extract_usage, call_cost_with_cache,
+using PromptingTools2
+using PromptingTools2: TokenUsage, total_tokens, extract_usage, call_cost_with_cache,
                       get_cache_discounts, build_message, extract_log_prob,
                       CACHE_DISCOUNTS, call_cost, AIMessage, DataMessage, AIToolRequest,
                       ToolMessage, OpenAISchema, AnthropicSchema, OllamaSchema,
@@ -107,15 +107,15 @@ end
         @test discounts.write_premium == 0.0
 
         # CustomOpenAISchema (unknown provider) defaults to 0%
-        @test get_cache_discounts("custom"; schema = PromptingTools.CustomOpenAISchema()).read_discount ==
+        @test get_cache_discounts("custom"; schema = PromptingTools2.CustomOpenAISchema()).read_discount ==
               0.0
     end
 
     @testset "Custom model name with GoogleOpenAISchema" begin
         # Register a custom model with GoogleOpenAISchema
-        PromptingTools.register_model!(
+        PromptingTools2.register_model!(
             name = "my-awesome-custom-gemini",
-            schema = PromptingTools.GoogleOpenAISchema(),
+            schema = PromptingTools2.GoogleOpenAISchema(),
             cost_of_token_prompt = 1e-6,
             cost_of_token_generation = 1e-6
         )
@@ -128,13 +128,13 @@ end
 
 @testset "call_cost_with_cache" begin
     # Register test models for cost calculation
-    PromptingTools.register_model!(
+    PromptingTools2.register_model!(
         name = "test-gpt-4",
         schema = OpenAISchema(),
         cost_of_token_prompt = 1e-5,
         cost_of_token_generation = 3e-5
     )
-    PromptingTools.register_model!(
+    PromptingTools2.register_model!(
         name = "test-claude",
         schema = AnthropicSchema(),
         cost_of_token_prompt = 3e-6,

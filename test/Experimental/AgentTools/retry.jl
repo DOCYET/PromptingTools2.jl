@@ -1,4 +1,4 @@
-using PromptingTools.Experimental.AgentTools: add_feedback!,
+using PromptingTools2.Experimental.AgentTools: add_feedback!,
                                               evaluate_condition!,
                                               SampleNode, expand!, AICallBlock
 

@@ -4,7 +4,7 @@
 """
     PREFERENCES
 
-You can set preferences for PromptingTools by setting environment variables or by using the `set_preferences!`.
+You can set preferences for PromptingTools2 by setting environment variables or by using the `set_preferences!`.
     It will create a `LocalPreferences.toml` file in your current directory and will reload your prefences from there.
 
 Check your preferences by calling `get_preferences(key::String)`.
@@ -104,7 +104,7 @@ const ALLOWED_PREFERENCES = ["MISTRAL_API_KEY",
 """
     set_preferences!(pairs::Pair{String, <:Any}...)
 
-Set preferences for PromptingTools. See `?PREFERENCES` for more information. 
+Set preferences for PromptingTools2. See `?PREFERENCES` for more information. 
 
 See also: `get_preferences`
 
@@ -112,7 +112,7 @@ See also: `get_preferences`
 
 Change your API key and default model:
 ```julia
-PromptingTools.set_preferences!("OPENAI_API_KEY" => "key1", "MODEL_CHAT" => "chat1")
+PromptingTools2.set_preferences!("OPENAI_API_KEY" => "key1", "MODEL_CHAT" => "chat1")
 ```
 """
 function set_preferences!(pairs::Pair{String, <:Any}...)
@@ -132,13 +132,13 @@ end
 """
     get_preferences(key::String)
 
-Get preferences for PromptingTools. See `?PREFERENCES` for more information.
+Get preferences for PromptingTools2. See `?PREFERENCES` for more information.
 
 See also: `set_preferences!`
 
 # Example
 ```julia
-PromptingTools.get_preferences("MODEL_CHAT")
+PromptingTools2.get_preferences("MODEL_CHAT")
 ```
 """
 function get_preferences(key::String)
@@ -309,12 +309,12 @@ spec = ModelSpec("gpt-3.5-turbo",
     "GPT-3.5 Turbo is a 175B parameter model and a common default on the OpenAI API.")
 
 # register it
-PromptingTools.register_model!(spec)
+PromptingTools2.register_model!(spec)
 ```
 
 But you can also register any model directly via keyword arguments:
 ```julia
-PromptingTools.register_model!(
+PromptingTools2.register_model!(
     name = "gpt-3.5-turbo",
     schema = OpenAISchema(),
     cost_of_token_prompt = 0.0015,
@@ -1648,7 +1648,7 @@ end
 
     You can use both the alias name or the full name to access the model spec:
     ```
-    PromptingTools.MODEL_REGISTRY["gpt-3.5-turbo"]
+    PromptingTools2.MODEL_REGISTRY["gpt-3.5-turbo"]
     ```
 
     # Registering a new model
@@ -1663,7 +1663,7 @@ end
 
     # Registering a model alias
     ```julia
-    PromptingTools.MODEL_ALIASES["gpt3"] = "gpt-3.5-turbo"
+    PromptingTools2.MODEL_ALIASES["gpt3"] = "gpt-3.5-turbo"
     ```
     # Extended help
     """*model_docs(MODEL_REGISTRY)
@@ -1690,7 +1690,7 @@ function Base.getindex(registry::ModelRegistry, key::String)
     end
 
     # Handle the case where the key is neither in the registry nor an alias
-    throw(KeyError("Model with key '$key' not found in PromptingTools.MODEL_REGISTRY."))
+    throw(KeyError("Model with key '$key' not found in PromptingTools2.MODEL_REGISTRY."))
 end
 function Base.setindex!(registry::ModelRegistry, value::ModelSpec, key::String)
     registry.registry[key] = value
@@ -1723,12 +1723,12 @@ A dictionary of model aliases. Aliases are used to refer to models by their alia
 
 # Accessing the aliases
 ```
-PromptingTools.MODEL_ALIASES["gpt3"]
+PromptingTools2.MODEL_ALIASES["gpt3"]
 ```
 
 # Register a new model alias
 ```julia
-PromptingTools.MODEL_ALIASES["gpt3"] = "gpt-3.5-turbo"
+PromptingTools2.MODEL_ALIASES["gpt3"] = "gpt-3.5-turbo"
 ```
 """
 const MODEL_ALIASES = MODEL_REGISTRY.aliases

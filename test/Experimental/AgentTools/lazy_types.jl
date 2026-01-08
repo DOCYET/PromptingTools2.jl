@@ -8,7 +8,7 @@
     show(io, config)
     str = String(take!(io))
     @test str ==
-          "RetryConfig\n  retries: Int64 1\n  calls: Int64 1\n  max_retries: Int64 10\n  max_calls: Int64 99\n  retry_delay: Int64 0\n  n_samples: Int64 1\n  scoring: PromptingTools.Experimental.AgentTools.UCT\n  ordering: Symbol PostOrderDFS\n  feedback_inplace: Bool false\n  feedback_template: Symbol FeedbackFromEvaluator\n  temperature: Float64 0.7\n  catch_errors: Bool false\n"
+          "RetryConfig\n  retries: Int64 1\n  calls: Int64 1\n  max_retries: Int64 10\n  max_calls: Int64 99\n  retry_delay: Int64 0\n  n_samples: Int64 1\n  scoring: PromptingTools2.Experimental.AgentTools.UCT\n  ordering: Symbol PostOrderDFS\n  feedback_inplace: Bool false\n  feedback_template: Symbol FeedbackFromEvaluator\n  temperature: Float64 0.7\n  catch_errors: Bool false\n"
 
     ## copy
     config2 = copy(config)

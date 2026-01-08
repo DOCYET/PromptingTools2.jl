@@ -1,13 +1,13 @@
-using PromptingTools: TestEchoOpenAISchema, render, OpenAISchema, role4render
-using PromptingTools: AIMessage, SystemMessage, AbstractMessage
-using PromptingTools: UserMessage, UserMessageWithImages, DataMessage, AIToolRequest,
+using PromptingTools2: TestEchoOpenAISchema, render, OpenAISchema, role4render
+using PromptingTools2: AIMessage, SystemMessage, AbstractMessage
+using PromptingTools2: UserMessage, UserMessageWithImages, DataMessage, AIToolRequest,
                       ToolMessage, Tool, ToolRef
-using PromptingTools: CustomProvider,
+using PromptingTools2: CustomProvider,
                       CustomOpenAISchema, MistralOpenAISchema, MODEL_EMBEDDING,
                       MODEL_IMAGE_GENERATION
-using PromptingTools: encode_choices, decode_choices, response_to_message, call_cost,
+using PromptingTools2: encode_choices, decode_choices, response_to_message, call_cost,
                       isextracted, isaitoolrequest, istoolmessage
-using PromptingTools: pick_tokenizer, OPENAI_TOKEN_IDS_GPT35_GPT4, OPENAI_TOKEN_IDS_GPT4O
+using PromptingTools2: pick_tokenizer, OPENAI_TOKEN_IDS_GPT35_GPT4, OPENAI_TOKEN_IDS_GPT4O
 
 @testset "render-OpenAI" begin
     schema = OpenAISchema()
@@ -270,7 +270,7 @@ end
     schema = CustomOpenAISchema()
 
     # Test rendering a single tool
-    tool = PromptingTools.Tool(
+    tool = PromptingTools2.Tool(
         name = "get_weather",
         description = "Get the current weather in a given location",
         parameters = Dict(
@@ -293,7 +293,7 @@ end
     @test rendered[1][:function][:parameters] == tool.parameters
 
     # Test rendering multiple tools
-    tool2 = PromptingTools.Tool(
+    tool2 = PromptingTools2.Tool(
         name = "get_time",
         description = "Get the current time in a given timezone",
         parameters = Dict(
@@ -318,7 +318,7 @@ end
     @test !haskey(rendered[1][:function], :description)
 
     # Test rendering with strict=true
-    strict_tool = PromptingTools.Tool(
+    strict_tool = PromptingTools2.Tool(
         name = "strict_function",
         description = "A function with strict input validation",
         parameters = Dict(

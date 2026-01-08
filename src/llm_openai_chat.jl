@@ -376,7 +376,7 @@ msg.content # "The sum of `1+1` is `2`."
 ___
 You can provide the whole conversation or more intricate prompts as a `Vector{AbstractMessage}`:
 ```julia
-const PT = PromptingTools
+const PT = PromptingTools2
 
 conversation = [
     PT.SystemMessage("You're master Yoda from Star Wars trying to help the user become a Yedi."),
@@ -1055,7 +1055,7 @@ struct MyMeasurement
     weight::Union{Nothing,Float64} # optional
 end
 msg = aiextract("James is 30, weighs 80kg. He's 180cm tall."; return_type=MyMeasurement)
-# PromptingTools.DataMessage(MyMeasurement)
+# PromptingTools2.DataMessage(MyMeasurement)
 msg.content
 # MyMeasurement(30, 180, 80.0)
 ```
@@ -1082,7 +1082,7 @@ msg.content.measurements
 
 Or you can use the convenience wrapper `ItemsExtract` to extract multiple measurements (zero, one or more):
 ```julia
-using PromptingTools: ItemsExtract
+using PromptingTools2: ItemsExtract
 
 return_type = ItemsExtract{MyMeasurement}
 msg = aiextract("James is 30, weighs 80kg. He's 180cm tall. Then Jack is 19 but really tall - over 190!"; return_type)
@@ -1093,7 +1093,7 @@ msg.content.items # see the extracted items
 Or if you want your extraction to fail gracefully when data isn't found, use `MaybeExtract{T}` wrapper
  (this trick is inspired by the Instructor package!):
 ```
-using PromptingTools: MaybeExtract
+using PromptingTools2: MaybeExtract
 
 return_type = MaybeExtract{MyMeasurement}
 # Effectively the same as:
@@ -1133,7 +1133,7 @@ msg = aiextract("Extract the following information from the text: location, temp
 
 Or simply call `aiextract("some text"; return_type = [:reasoning,:answer])` to get a Chain of Thought reasoning for extraction task.
 
-It will be returned it a new generated type, which you can check with `PromptingTools.isextracted(msg.content) == true` to confirm the data has been extracted correctly.
+It will be returned it a new generated type, which you can check with `PromptingTools2.isextracted(msg.content) == true` to confirm the data has been extracted correctly.
 
 This new syntax also allows you to provide field-level descriptions, which will be passed to the model.
 ```julia
@@ -1156,7 +1156,7 @@ Expect a few second delay on the first call for a specific struct, as the provid
 ```julia
 msg = aiextract("Extract the following information from the text: location, temperature, condition. Text: The weather in New York is sunny and 72.5 degrees Fahrenheit."; 
 return_type = fields_with_descriptions, json_mode = true)
-# PromptingTools.DataMessage(NamedTuple)
+# PromptingTools2.DataMessage(NamedTuple)
 
 msg.content
 # (location = "New York", temperature = 72.5, condition = "sunny")

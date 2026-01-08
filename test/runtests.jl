@@ -1,22 +1,22 @@
-using PromptingTools
+using PromptingTools2
 using OpenAI, HTTP, JSON3
 using SparseArrays, LinearAlgebra, Markdown
 using Statistics
 using Dates: now
 using Test, Pkg, Random
-const PT = PromptingTools
+const PT = PromptingTools2
 using GoogleGenAI
 using Aqua
 
 @testset "Code quality (Aqua.jl)" begin
     # Skipping unbound_args check because we need our `MaybeExtract` type to be unboard
     @static if VERSION >= v"1.9" && VERSION <= v"1.10"
-        Aqua.test_all(PromptingTools; unbound_args = false, piracy = false)
+        Aqua.test_all(PromptingTools2; unbound_args = false, piracy = false)
     else
-        Aqua.test_all(PromptingTools; unbound_args = false)
+        Aqua.test_all(PromptingTools2; unbound_args = false)
     end
 end
-@testset "PromptingTools.jl" begin
+@testset "PromptingTools2.jl" begin
     include("utils.jl")
     include("messages.jl")
     include("usage.jl")

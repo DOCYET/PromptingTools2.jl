@@ -1,8 +1,8 @@
 using Test
-using PromptingTools
-using PromptingTools.Experimental.AgentTools
+using PromptingTools2
+using PromptingTools2.Experimental.AgentTools
 using AbstractTrees
-const PT = PromptingTools
+const PT = PromptingTools2
 
 @testset "AgentTools" begin
     include("utils.jl")

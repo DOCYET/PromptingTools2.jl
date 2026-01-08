@@ -1,4 +1,4 @@
-using PromptingTools.CustomRetryLayer: enable_retry!, custom_retry_layer,
+using PromptingTools2.CustomRetryLayer: enable_retry!, custom_retry_layer,
                                        extract_retry_after, parse_time_string,
                                        is_paused, pause_requests, RETRY_CONFIG,
                                        RATE_LIMIT_STATE

@@ -1,8 +1,8 @@
-using PromptingTools: AbstractChatMessage, SystemMessage, UserMessage, MetadataMessage
-using PromptingTools: render
-using PromptingTools: load_templates!, aitemplates, create_template, AITemplateMetadata,
+using PromptingTools2: AbstractChatMessage, SystemMessage, UserMessage, MetadataMessage
+using PromptingTools2: render
+using PromptingTools2: load_templates!, aitemplates, create_template, AITemplateMetadata,
                       save_conversation
-using PromptingTools: TestEchoOpenAISchema
+using PromptingTools2: TestEchoOpenAISchema
 
 @testset "Template rendering" begin
     template = AITemplate(:JudgeIsItTrue)

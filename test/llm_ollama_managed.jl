@@ -1,6 +1,6 @@
-using PromptingTools: TestEchoOllamaManagedSchema, render, OllamaManagedSchema, ollama_api
-using PromptingTools: AIMessage, SystemMessage, AbstractMessage
-using PromptingTools: UserMessage, UserMessageWithImages, DataMessage
+using PromptingTools2: TestEchoOllamaManagedSchema, render, OllamaManagedSchema, ollama_api
+using PromptingTools2: AIMessage, SystemMessage, AbstractMessage
+using PromptingTools2: UserMessage, UserMessageWithImages, DataMessage
 
 # Write unit tests for the render function
 @testset "render-ollama" begin

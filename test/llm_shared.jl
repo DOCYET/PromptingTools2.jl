@@ -1,8 +1,8 @@
-using PromptingTools: render, NoSchema, AbstractPromptSchema, OpenAISchema
-using PromptingTools: AIMessage, SystemMessage, AbstractMessage, AbstractChatMessage
-using PromptingTools: UserMessage, UserMessageWithImages, DataMessage, AIToolRequest,
+using PromptingTools2: render, NoSchema, AbstractPromptSchema, OpenAISchema
+using PromptingTools2: AIMessage, SystemMessage, AbstractMessage, AbstractChatMessage
+using PromptingTools2: UserMessage, UserMessageWithImages, DataMessage, AIToolRequest,
                       ToolMessage, ToolRef
-using PromptingTools: finalize_outputs, role4render
+using PromptingTools2: finalize_outputs, role4render
 
 @testset "render-NoSchema" begin
     schema = NoSchema()

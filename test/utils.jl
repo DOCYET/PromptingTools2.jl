@@ -1,11 +1,11 @@
-using PromptingTools: recursive_splitter, wrap_string, replace_words,
+using PromptingTools2: recursive_splitter, wrap_string, replace_words,
                       length_longest_common_subsequence, distance_longest_common_subsequence
-using PromptingTools: _extract_handlebar_variables, call_cost, call_cost_alternative,
+using PromptingTools2: _extract_handlebar_variables, call_cost, call_cost_alternative,
                       _report_stats
-using PromptingTools: _string_to_vector, _encode_local_image, extract_image_attributes,
+using PromptingTools2: _string_to_vector, _encode_local_image, extract_image_attributes,
                       ensure_http_prefix
-using PromptingTools: DataMessage, AIMessage, UserMessage
-using PromptingTools: push_conversation!,
+using PromptingTools2: DataMessage, AIMessage, UserMessage
+using PromptingTools2: push_conversation!,
                       resize_conversation!, @timeout, preview, pprint, auth_header,
                       unique_permutation
 

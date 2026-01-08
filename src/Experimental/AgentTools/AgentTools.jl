@@ -7,8 +7,8 @@ This module is experimental and may change at any time. It is intended to be mov
 """
 module AgentTools
 
-using PromptingTools
-const PT = PromptingTools
+using PromptingTools2
+const PT = PromptingTools2
 using AbstractTrees
 using AbstractTrees: print_tree, PreOrderDFS, PostOrderDFS
 using Random
@@ -16,7 +16,7 @@ using Test
 
 # re-export
 export AICode, last_output, last_message # extended in lazy_types.jl
-using PromptingTools: last_output, last_message, AICode
+using PromptingTools2: last_output, last_message, AICode
 
 export print_tree, PreOrderDFS, PostOrderDFS
 include("utils.jl")

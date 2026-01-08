@@ -1,7 +1,7 @@
-using PromptingTools: ModelSpec,
+using PromptingTools2: ModelSpec,
                       register_model!, MODEL_REGISTRY, MODEL_ALIASES, ModelRegistry
-using PromptingTools: list_registry, list_aliases
-using PromptingTools: OpenAISchema, OllamaManagedSchema, set_preferences!, get_preferences
+using PromptingTools2: list_registry, list_aliases
+using PromptingTools2: OpenAISchema, OllamaManagedSchema, set_preferences!, get_preferences
 
 @testset "set_preferences!" begin
     # Remember old preferences
@@ -17,7 +17,7 @@ using PromptingTools: OpenAISchema, OllamaManagedSchema, set_preferences!, get_p
     ]
         set_preferences!(pref => "test_value")
         @test get_preferences(pref) == "test_value"  # Assuming a get_preferences function exists
-        @test getproperty(PromptingTools, Symbol(pref)) == "test_value"  # Check if the module-level variable is updated
+        @test getproperty(PromptingTools2, Symbol(pref)) == "test_value"  # Check if the module-level variable is updated
     end
 
     # Test Attempting to Set a Disallowed Preference

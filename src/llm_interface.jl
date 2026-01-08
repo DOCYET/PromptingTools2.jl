@@ -501,7 +501,7 @@ See also: `meta`, `unwrap`, `TracerSchema`, `initialize_tracer`, `finalize_trace
 
 # Example
 ```julia
-using PromptingTools: TracerSchema, OpenAISchema, SaverSchema
+using PromptingTools2: TracerSchema, OpenAISchema, SaverSchema
 # This schema will first trace the metadata (change to TraceMessage) and then save the conversation to the disk
 
 wrap_schema = OpenAISchema() |> TracerSchema |> SaverSchema

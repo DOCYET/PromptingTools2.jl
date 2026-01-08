@@ -1,12 +1,12 @@
 using Test
-using PromptingTools: GoogleOpenAISchema, AIMessage, aigenerate, aiembed
+using PromptingTools2: GoogleOpenAISchema, AIMessage, aigenerate, aiembed
 
 @testset "GoogleOpenAISchema" begin
     # Save original API key
-    original_api_key = PromptingTools.GOOGLE_API_KEY
+    original_api_key = PromptingTools2.GOOGLE_API_KEY
 
     # Test with empty GOOGLE_API_KEY
-    PromptingTools.GOOGLE_API_KEY = ""
+    PromptingTools2.GOOGLE_API_KEY = ""
     PORT = rand(10000:20000)
     echo_server = HTTP.serve!(PORT, verbose = -1) do req
         auth_header = HTTP.header(req, "Authorization")
@@ -36,7 +36,7 @@ using PromptingTools: GoogleOpenAISchema, AIMessage, aigenerate, aiembed
     close(echo_server)
 
     # Test with non-empty GOOGLE_API_KEY - explicit api_key should take precedence
-    PromptingTools.GOOGLE_API_KEY = "env_key"
+    PromptingTools2.GOOGLE_API_KEY = "env_key"
     PORT = rand(10000:20000)
     echo_server = HTTP.serve!(PORT, verbose = -1) do req
         auth_header = HTTP.header(req, "Authorization")
@@ -66,7 +66,7 @@ using PromptingTools: GoogleOpenAISchema, AIMessage, aigenerate, aiembed
     close(echo_server)
 
     # Test embeddings with empty GOOGLE_API_KEY
-    PromptingTools.GOOGLE_API_KEY = ""
+    PromptingTools2.GOOGLE_API_KEY = ""
     PORT = rand(10000:20000)
     echo_server = HTTP.serve!(PORT, verbose = -1) do req
         auth_header = HTTP.header(req, "Authorization")
@@ -92,7 +92,7 @@ using PromptingTools: GoogleOpenAISchema, AIMessage, aigenerate, aiembed
     close(echo_server)
 
     # Test embeddings with non-empty GOOGLE_API_KEY - explicit api_key should take precedence
-    PromptingTools.GOOGLE_API_KEY = "env_key"
+    PromptingTools2.GOOGLE_API_KEY = "env_key"
     PORT = rand(10000:20000)
     echo_server = HTTP.serve!(PORT, verbose = -1) do req
         auth_header = HTTP.header(req, "Authorization")
@@ -118,5 +118,5 @@ using PromptingTools: GoogleOpenAISchema, AIMessage, aigenerate, aiembed
     close(echo_server)
 
     # Restore original API key
-    PromptingTools.GOOGLE_API_KEY = original_api_key
+    PromptingTools2.GOOGLE_API_KEY = original_api_key
 end

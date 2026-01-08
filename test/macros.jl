@@ -1,5 +1,5 @@
-using PromptingTools: @ai_str, @aai_str, @ai!_str, @aai!_str
-using PromptingTools: TestEchoOpenAISchema, push_conversation!, CONV_HISTORY, UserMessage
+using PromptingTools2: @ai_str, @aai_str, @ai!_str, @aai!_str
+using PromptingTools2: TestEchoOpenAISchema, push_conversation!, CONV_HISTORY, UserMessage
 
 # Develop the test for all ai"" macros...
 # eg, ai"Hello echo"echo0 will send it to our echo model

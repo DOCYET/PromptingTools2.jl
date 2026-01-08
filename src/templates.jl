@@ -36,7 +36,7 @@ Find available templates with `aitemplates`:
 tmps = aitemplates("JuliaExpertAsk")
 # Will surface one specific template
 # 1-element Vector{AITemplateMetadata}:
-# PromptingTools.AITemplateMetadata
+# PromptingTools2.AITemplateMetadata
 #   name: Symbol JuliaExpertAsk
 #   description: String "For asking questions about Julia language. Placeholders: `ask`"
 #   version: String "1"
@@ -65,7 +65,7 @@ I have my selected template, how do I use it? Just use the "name" in `aigenerate
 
 You can inspect any template by "rendering" it (this is what the LLM will see):
 ```julia
-julia> AITemplate(:JudgeIsItTrue) |> PromptingTools.render
+julia> AITemplate(:JudgeIsItTrue) |> PromptingTools2.render
 ```
 
 See also: `save_template`, `load_template`, `load_templates!` for more advanced use cases (and the corresponding script in `examples/` folder)
@@ -278,7 +278,7 @@ Find available templates with `aitemplates`:
 tmps = aitemplates("JuliaExpertAsk")
 # Will surface one specific template
 # 1-element Vector{AITemplateMetadata}:
-# PromptingTools.AITemplateMetadata
+# PromptingTools2.AITemplateMetadata
 #   name: Symbol JuliaExpertAsk
 #   description: String "For asking questions about Julia language. Placeholders: `ask`"
 #   version: String "1"
@@ -444,9 +444,9 @@ Let's generate a quick template for a simple conversation (only one placeholder:
 # first system message, then user message (or use kwargs)
 tpl=PT.create_template("You must speak like a pirate", "Say hi to {{name}}")
 
-## 2-element Vector{PromptingTools.AbstractChatMessage}:
-## PromptingTools.SystemMessage("You must speak like a pirate")
-##  PromptingTools.UserMessage("Say hi to {{name}}")
+## 2-element Vector{PromptingTools2.AbstractChatMessage}:
+## PromptingTools2.SystemMessage("You must speak like a pirate")
+##  PromptingTools2.UserMessage("Say hi to {{name}}")
 ```
 
 You can immediately use this template in `ai*` functions:
@@ -475,7 +475,7 @@ You can verify that your template is loaded with a quick search for "pirate":
 aitemplates("pirate")
 
 ## 1-element Vector{AITemplateMetadata}:
-## PromptingTools.AITemplateMetadata
+## PromptingTools2.AITemplateMetadata
 ##   name: Symbol GreatingPirate
 ##   description: String ""
 ##   version: String "1.0"

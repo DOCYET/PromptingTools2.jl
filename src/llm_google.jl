@@ -86,7 +86,7 @@ Returns a dictionary of config arguments that can be used to create GoogleGenAI.
 function process_google_config(api_kwargs, system_instruction, http_kwargs)
     config_kwargs = Dict{Symbol, Any}()
 
-    ext = Base.get_extension(PromptingTools, :GoogleGenAIPromptingToolsExt)
+    ext = Base.get_extension(PromptingTools2, :GoogleGenAIPromptingTools2Ext)
     if !isnothing(ext)
         GoogleGenAI = ext.GoogleGenAI
 
@@ -155,7 +155,7 @@ function extract_usage(::AbstractGoogleSchema, resp; model_id::String = "", elap
     )
 end
 
-"Stub - to be extended in extension: GoogleGenAIPromptingToolsExt. `ggi` stands for GoogleGenAI"
+"Stub - to be extended in extension: GoogleGenAIPromptingTools2Ext. `ggi` stands for GoogleGenAI"
 function ggi_generate_content end
 function ggi_generate_content(schema::TestEchoGoogleSchema, api_key::AbstractString,
         model::AbstractString,
@@ -261,7 +261,7 @@ function aigenerate(prompt_schema::AbstractGoogleSchema, prompt::ALLOWED_PROMPT_
     api_key = !isempty(api_key) ? api_key : GOOGLE_API_KEY
 
     ## Check that package GoogleGenAI is loaded
-    ext = Base.get_extension(PromptingTools, :GoogleGenAIPromptingToolsExt)
+    ext = Base.get_extension(PromptingTools2, :GoogleGenAIPromptingTools2Ext)
     if isnothing(ext) && !(prompt_schema isa TestEchoGoogleSchema)
         throw(ArgumentError("You need to also import GoogleGenAI package to use this function"))
     end

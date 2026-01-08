@@ -1,11 +1,11 @@
-using PromptingTools: TestEchoOpenAISchema, render, OpenAISchema
-using PromptingTools: AIMessage, SystemMessage, AbstractMessage
-using PromptingTools: UserMessage, UserMessageWithImages, DataMessage
-using PromptingTools: response_to_message, AbstractPromptSchema, isextracted,
+using PromptingTools2: TestEchoOpenAISchema, render, OpenAISchema
+using PromptingTools2: AIMessage, SystemMessage, AbstractMessage
+using PromptingTools2: UserMessage, UserMessageWithImages, DataMessage
+using PromptingTools2: response_to_message, AbstractPromptSchema, isextracted,
                       AbstractExtractedData
 
 @testset "ai* default schema" begin
-    OLD_PROMPT_SCHEMA = PromptingTools.PROMPT_SCHEMA
+    OLD_PROMPT_SCHEMA = PromptingTools2.PROMPT_SCHEMA
     ### AIGenerate
     # corresponds to OpenAI API v1
     response = Dict(
@@ -15,7 +15,7 @@ using PromptingTools: response_to_message, AbstractPromptSchema, isextracted,
         :usage => Dict(:total_tokens => 3, :prompt_tokens => 2, :completion_tokens => 1))
 
     schema = TestEchoOpenAISchema(; response, status = 200)
-    PromptingTools.PROMPT_SCHEMA = schema
+    PromptingTools2.PROMPT_SCHEMA = schema
     msg = aigenerate("Hello World"; model = "xyz")
     expected_output = AIMessage(;
         content = "Hello!" |> strip,
@@ -60,7 +60,7 @@ using PromptingTools: response_to_message, AbstractPromptSchema, isextracted,
         :usage => Dict(:total_tokens => 3, :prompt_tokens => 2, :completion_tokens => 1))
 
     schema = TestEchoOpenAISchema(; response = response1, status = 200)
-    PromptingTools.PROMPT_SCHEMA = schema
+    PromptingTools2.PROMPT_SCHEMA = schema
     struct MyType
         content::String
     end
@@ -90,7 +90,7 @@ using PromptingTools: response_to_message, AbstractPromptSchema, isextracted,
 
     # Real generation API
     schema2 = TestEchoOpenAISchema(; response = response2, status = 200)
-    PromptingTools.PROMPT_SCHEMA = schema2
+    PromptingTools2.PROMPT_SCHEMA = schema2
     msg = aiembed("Hello World"; model = "xyz")
     expected_output = DataMessage(;
         content = ones(128),
@@ -102,7 +102,7 @@ using PromptingTools: response_to_message, AbstractPromptSchema, isextracted,
     @test msg == expected_output
 
     ## Return things to previous
-    PromptingTools.PROMPT_SCHEMA = OLD_PROMPT_SCHEMA
+    PromptingTools2.PROMPT_SCHEMA = OLD_PROMPT_SCHEMA
 
     ## Check response_to_message throws by default
     struct Random123Schema <: AbstractPromptSchema end

@@ -1,14 +1,14 @@
-using PromptingTools: AIMessage, SystemMessage, MetadataMessage, AbstractMessage
-using PromptingTools: UserMessage, UserMessageWithImages, DataMessage, AIToolRequest,
+using PromptingTools2: AIMessage, SystemMessage, MetadataMessage, AbstractMessage
+using PromptingTools2: UserMessage, UserMessageWithImages, DataMessage, AIToolRequest,
                       ToolMessage, AnnotationMessage
-using PromptingTools: _encode_local_image, attach_images_to_user_message, last_message,
+using PromptingTools2: _encode_local_image, attach_images_to_user_message, last_message,
                       last_output, tool_calls
-using PromptingTools: isusermessage, issystemmessage, isdatamessage, isaimessage,
+using PromptingTools2: isusermessage, issystemmessage, isdatamessage, isaimessage,
                       istracermessage, isaitoolrequest, istoolmessage,
                       isabstractannotationmessage
-using PromptingTools: TracerMessageLike, TracerMessage, align_tracer!, unwrap,
+using PromptingTools2: TracerMessageLike, TracerMessage, align_tracer!, unwrap,
                       AbstractTracerMessage, AbstractTracer, pprint, annotate!
-using PromptingTools: TracerSchema, SaverSchema
+using PromptingTools2: TracerSchema, SaverSchema
 
 @testset "Message constructors" begin
     # Creates an instance of MSG with the given content string.

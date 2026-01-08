@@ -1,8 +1,8 @@
-using PromptingTools.Experimental.AgentTools: expand!, find_node, backpropagate!, SampleNode
-using PromptingTools.Experimental.AgentTools: print_tree,
+using PromptingTools2.Experimental.AgentTools: expand!, find_node, backpropagate!, SampleNode
+using PromptingTools2.Experimental.AgentTools: print_tree,
                                               print_samples, reset_success!,
                                               collect_all_feedback
-using PromptingTools.Experimental.AgentTools: score,
+using PromptingTools2.Experimental.AgentTools: score,
                                               UCT, ThompsonSampling,
                                               AbstractScoringMethod, select_best
 

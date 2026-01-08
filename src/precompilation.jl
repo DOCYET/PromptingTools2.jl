@@ -1,4 +1,4 @@
-using PromptingTools: OPENAI_TOKEN_IDS_GPT4O
+using PromptingTools2: OPENAI_TOKEN_IDS_GPT4O
 # Basic Message Types precompilation - moved to top
 sys_msg = SystemMessage("You are a helpful assistant")
 user_msg = UserMessage("Hello!")

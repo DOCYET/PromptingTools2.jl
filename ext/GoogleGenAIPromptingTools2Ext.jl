@@ -1,12 +1,12 @@
-module GoogleGenAIPromptingToolsExt
+module GoogleGenAIPromptingTools2Ext
 
 using GoogleGenAI
-using PromptingTools
+using PromptingTools2
 using HTTP, JSON3
-const PT = PromptingTools
+const PT = PromptingTools2
 
 "Wrapper for GoogleGenAI.generate_content with new interface."
-function PromptingTools.ggi_generate_content(prompt_schema::PT.AbstractGoogleSchema,
+function PromptingTools2.ggi_generate_content(prompt_schema::PT.AbstractGoogleSchema,
         api_key::AbstractString, model_name::AbstractString,
         conversation; system_instruction = nothing, http_kwargs = NamedTuple(),
         api_kwargs = NamedTuple(), kwargs...)

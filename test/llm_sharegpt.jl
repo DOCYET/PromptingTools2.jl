@@ -1,6 +1,6 @@
-using PromptingTools: role4render, render, ShareGPTSchema
-using PromptingTools: AIMessage, SystemMessage, AbstractMessage
-using PromptingTools: UserMessage, UserMessageWithImages, DataMessage
+using PromptingTools2: role4render, render, ShareGPTSchema
+using PromptingTools2: AIMessage, SystemMessage, AbstractMessage
+using PromptingTools2: UserMessage, UserMessageWithImages, DataMessage
 
 @testset "render-ShareGPT" begin
     schema = ShareGPTSchema()

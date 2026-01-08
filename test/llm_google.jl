@@ -1,8 +1,8 @@
 ## using GoogleGenAI # not needed 
-using PromptingTools: TestEchoGoogleSchema, render, GoogleSchema, ggi_generate_content
-using PromptingTools: AIMessage, SystemMessage, AbstractMessage
-using PromptingTools: UserMessage, DataMessage
-const PT = PromptingTools
+using PromptingTools2: TestEchoGoogleSchema, render, GoogleSchema, ggi_generate_content
+using PromptingTools2: AIMessage, SystemMessage, AbstractMessage
+using PromptingTools2: UserMessage, DataMessage
+const PT = PromptingTools2
 
 @testset "render-Google" begin
     schema = GoogleSchema()
@@ -273,7 +273,7 @@ end
     @test config_kwargs[:http_options][:timeout] == 30
 
     # Extension behavior - test both loaded and not loaded scenarios
-    ext = Base.get_extension(PromptingTools, :GoogleGenAIPromptingToolsExt)
+    ext = Base.get_extension(PromptingTools2, :GoogleGenAIPromptingTools2Ext)
 
     if !isnothing(ext)
         # Test unsupported kwargs warning when extension is loaded

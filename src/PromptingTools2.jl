@@ -1,4 +1,4 @@
-module PromptingTools
+module PromptingTools2
 
 import AbstractTrees
 using Base64: base64encode
@@ -144,4 +144,4 @@ with_logger(NullLogger()) do
     @compile_workload include("precompilation.jl")
 end
 
-end # module PromptingTools
+end # module PromptingTools2

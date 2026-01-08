@@ -47,8 +47,8 @@ end
 
 The `ai!""` string macro is used to continue a previous conversation with the AI model. 
 
-It appends the new user prompt to the last conversation in the tracked history (in `PromptingTools.CONV_HISTORY`) and generates a response based on the entire conversation context.
-If you want to see the previous conversation, you can access it via `PromptingTools.CONV_HISTORY`, which keeps at most last `PromptingTools.MAX_HISTORY_LENGTH` conversations.
+It appends the new user prompt to the last conversation in the tracked history (in `PromptingTools2.CONV_HISTORY`) and generates a response based on the entire conversation context.
+If you want to see the previous conversation, you can access it via `PromptingTools2.CONV_HISTORY`, which keeps at most last `PromptingTools2.MAX_HISTORY_LENGTH` conversations.
 
 ## Arguments
 - `user_prompt` (String): The new input prompt to be added to the existing conversation.

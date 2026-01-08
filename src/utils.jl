@@ -858,7 +858,7 @@ end
 "Utility for rendering the conversation (vector of messages) as markdown. REQUIRES the Markdown package to load the extension! See also `pprint`"
 function preview end
 
-"Utility for pretty printing PromptingTools types in REPL."
+"Utility for pretty printing PromptingTools2 types in REPL."
 function pprint end
 
 # show fallback

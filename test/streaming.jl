@@ -1,6 +1,6 @@
-using PromptingTools: StreamCallback, StreamChunk, OpenAIStream, OpenAIResponsesStream,
+using PromptingTools2: StreamCallback, StreamChunk, OpenAIStream, OpenAIResponsesStream,
                       AnthropicStream, configure_callback!, OllamaStream
-using PromptingTools: OpenAISchema, AnthropicSchema, GoogleSchema, OllamaSchema,
+using PromptingTools2: OpenAISchema, AnthropicSchema, GoogleSchema, OllamaSchema,
                       OpenAIResponseSchema
 
 @testset "configure_callback!" begin

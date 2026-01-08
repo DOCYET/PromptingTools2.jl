@@ -1,8 +1,8 @@
-using PromptingTools: TestEchoAnthropicSchema, render, AnthropicSchema
-using PromptingTools: AIMessage, SystemMessage, AbstractMessage
-using PromptingTools: UserMessage, UserMessageWithImages, DataMessage, AIToolRequest,
+using PromptingTools2: TestEchoAnthropicSchema, render, AnthropicSchema
+using PromptingTools2: AIMessage, SystemMessage, AbstractMessage
+using PromptingTools2: UserMessage, UserMessageWithImages, DataMessage, AIToolRequest,
                       ToolMessage, Tool
-using PromptingTools: call_cost, anthropic_api, function_call_signature,
+using PromptingTools2: call_cost, anthropic_api, function_call_signature,
                       anthropic_extra_headers, ToolRef, BETA_HEADERS_ANTHROPIC
 
 @testset "render-Anthropic" begin
@@ -338,7 +338,7 @@ end
     @test rendered[2][:name] == "get_time"
 
     # Test rendering with no description
-    tool_no_desc = PromptingTools.Tool(
+    tool_no_desc = PromptingTools2.Tool(
         name = "no_description_tool",
         parameters = Dict(
             "type" => "object",
@@ -858,8 +858,8 @@ end
 
 @testset "Anthropic thinking budget validation" begin
     # Test that an assertion error is thrown when thinking budget exceeds max_tokens
-    @test_throws AssertionError PromptingTools.anthropic_api(
-        PromptingTools.AnthropicSchema(),
+    @test_throws AssertionError PromptingTools2.anthropic_api(
+        PromptingTools2.AnthropicSchema(),
         [Dict("role" => "user", "content" => [Dict("type" => "text", "text" => "Hello")])];
         model = "claude-3-haiku-20240307",
         max_tokens = 100,
@@ -879,8 +879,8 @@ end
 
     # Test that no error is thrown when thinking budget is equal to max_tokens
     try
-        PromptingTools.anthropic_api(
-            PromptingTools.TestEchoAnthropicSchema(
+        PromptingTools2.anthropic_api(
+            PromptingTools2.TestEchoAnthropicSchema(
                 response = dummy_response,
                 status = 200
             ),
@@ -897,8 +897,8 @@ end
 
     # Test that no error is thrown when thinking budget is less than max_tokens
     try
-        PromptingTools.anthropic_api(
-            PromptingTools.TestEchoAnthropicSchema(
+        PromptingTools2.anthropic_api(
+            PromptingTools2.TestEchoAnthropicSchema(
                 response = dummy_response,
                 status = 200
             ),

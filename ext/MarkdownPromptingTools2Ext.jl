@@ -1,8 +1,8 @@
-module MarkdownPromptingToolsExt
+module MarkdownPromptingTools2Ext
 
-using PromptingTools
+using PromptingTools2
 using Markdown
-const PT = PromptingTools
+const PT = PromptingTools2
 
 """
     preview(msg::PT.AbstractMessage)

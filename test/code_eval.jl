@@ -1,6 +1,6 @@
-using PromptingTools: extract_code_blocks, extract_code_blocks_fallback, eval!
-using PromptingTools: AICode, isparsed, isparseerror, is_julia_code, is_julia_expr
-using PromptingTools: extract_module_name
+using PromptingTools2: extract_code_blocks, extract_code_blocks_fallback, eval!
+using PromptingTools2: AICode, isparsed, isparseerror, is_julia_code, is_julia_expr
+using PromptingTools2: extract_module_name
 
 @testset "eval!" begin
     # Test that it captures stdout and output

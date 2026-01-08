@@ -1,9 +1,9 @@
-using PromptingTools: AIMessage,
+using PromptingTools2: AIMessage,
                       SystemMessage, UserMessage, UserMessageWithImages, AbstractMessage,
                       DataMessage, ShareGPTSchema, Tool, ToolMessage, AIToolRequest,
                       AnnotationMessage, AbstractAnnotationMessage
-using PromptingTools: save_conversation, load_conversation, save_conversations
-using PromptingTools: save_template, load_template
+using PromptingTools2: save_conversation, load_conversation, save_conversations
+using PromptingTools2: save_template, load_template
 
 @testset "Serialization - Messages" begin
     # Test save_conversation

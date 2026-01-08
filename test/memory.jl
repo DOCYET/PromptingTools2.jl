@@ -1,6 +1,6 @@
-using PromptingTools: SystemMessage, UserMessage, AIMessage, AbstractMessage
-using PromptingTools: TestEchoOpenAISchema, ConversationMemory
-using PromptingTools: issystemmessage, isusermessage, isaimessage, last_message,
+using PromptingTools2: SystemMessage, UserMessage, AIMessage, AbstractMessage
+using PromptingTools2: TestEchoOpenAISchema, ConversationMemory
+using PromptingTools2: issystemmessage, isusermessage, isaimessage, last_message,
                       last_output, register_model!, batch_start_index,
                       get_last, pprint
 

@@ -54,7 +54,7 @@ end
     AIEmbed(args...; kwargs...)
     AIExtract(args...; kwargs...)
 
-A lazy call wrapper for AI functions in the `PromptingTools` module, such as `aigenerate`.
+A lazy call wrapper for AI functions in the `PromptingTools2` module, such as `aigenerate`.
 
 The `AICall` struct is designed to facilitate a deferred execution model (lazy evaluation) for AI functions that interact with a Language Learning Model (LLM). It stores the necessary information for an AI call and executes the underlying AI function only when supplied with a `UserMessage` or when the `run!` method is applied. This approach allows for more flexible and efficient handling of AI function calls, especially in interactive environments.
 

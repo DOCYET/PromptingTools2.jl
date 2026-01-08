@@ -1,5 +1,5 @@
-using PromptingTools: AICode, isparsed, isparseerror, is_julia_code, is_julia_expr
-using PromptingTools: remove_all_tests_from_expr!,
+using PromptingTools2: AICode, isparsed, isparseerror, is_julia_code, is_julia_expr
+using PromptingTools2: remove_all_tests_from_expr!,
                       remove_test_items_from_expr!, remove_macro_expr!, extract_module_name
 
 @testset "is_julia_expr" begin

@@ -503,7 +503,7 @@ struct MyMeasurement
 end
 tool_map = tool_call_signature(MyMeasurement)
 #
-# Dict{String, PromptingTools.AbstractTool}("MyMeasurement" => PromptingTools.Tool
+# Dict{String, PromptingTools2.AbstractTool}("MyMeasurement" => PromptingTools2.Tool
 #   name: String "MyMeasurement"
 #   parameters: Dict{String, Any}
 #   description: Nothing nothing
@@ -527,7 +527,7 @@ end
 
 Or if you want your extraction to fail gracefully when data isn't found, use `MaybeExtract{T}` wrapper (inspired by Instructor package!):
 ```
-using PromptingTools: MaybeExtract
+using PromptingTools2: MaybeExtract
 
 type = MaybeExtract{MyMeasurement}
 # Effectively the same as:
@@ -564,7 +564,7 @@ function tool_call_signature(
     end
     ## Standardize the name
     name = if isnothing(name) && type_or_method isa Type
-        replace(string(nameof(type_or_method)), "PromptingTools." => "") |>
+        replace(string(nameof(type_or_method)), "PromptingTools2." => "") |>
         x -> replace(x, r"[^0-9A-Za-z_-]" => "") |> x -> first(x, 64)
     elseif isnothing(name) && type_or_method isa Method
         string(type_or_method.name)

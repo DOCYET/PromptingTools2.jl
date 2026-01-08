@@ -1,9 +1,9 @@
-using PromptingTools: TestEchoOpenAIResponseSchema, OpenAIResponseSchema,
+using PromptingTools2: TestEchoOpenAIResponseSchema, OpenAIResponseSchema,
                       AbstractOpenAIResponseSchema, render
-using PromptingTools: AIMessage, DataMessage, SystemMessage, UserMessage, AbstractMessage
-using PromptingTools: aigenerate, aiextract, create_response, call_cost
-using PromptingTools: tool_call_signature, parse_tool
-using PromptingTools: issystemmessage, isusermessage, isaimessage
+using PromptingTools2: AIMessage, DataMessage, SystemMessage, UserMessage, AbstractMessage
+using PromptingTools2: aigenerate, aiextract, create_response, call_cost
+using PromptingTools2: tool_call_signature, parse_tool
+using PromptingTools2: issystemmessage, isusermessage, isaimessage
 
 @testset "render-OpenAIResponses" begin
     schema = OpenAIResponseSchema()
@@ -396,11 +396,11 @@ end
 @testset "Model registry integration" begin
     # Test that OpenAIResponseSchema models are properly registered
 
-    @test haskey(PromptingTools.MODEL_REGISTRY, "gpt-5.1-codex")
-    @test PromptingTools.MODEL_REGISTRY["gpt-5.1-codex"].schema isa OpenAIResponseSchema
+    @test haskey(PromptingTools2.MODEL_REGISTRY, "gpt-5.1-codex")
+    @test PromptingTools2.MODEL_REGISTRY["gpt-5.1-codex"].schema isa OpenAIResponseSchema
 
-    @test haskey(PromptingTools.MODEL_REGISTRY, "gpt-5.1-codex-mini")
-    @test PromptingTools.MODEL_REGISTRY["gpt-5.1-codex-mini"].schema isa
+    @test haskey(PromptingTools2.MODEL_REGISTRY, "gpt-5.1-codex-mini")
+    @test PromptingTools2.MODEL_REGISTRY["gpt-5.1-codex-mini"].schema isa
           OpenAIResponseSchema
 end
 
@@ -461,7 +461,7 @@ end
 end
 
 @testset "aigenerate-OpenAIResponses-streaming" begin
-    using PromptingTools: StreamCallback, OpenAIResponsesStream, configure_callback!
+    using PromptingTools2: StreamCallback, OpenAIResponsesStream, configure_callback!
 
     # Test configure_callback! returns correct flavor
     @testset "configure_callback! setup" begin

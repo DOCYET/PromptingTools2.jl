@@ -1,12 +1,12 @@
-using PromptingTools: MaybeExtract, extract_docstring, ItemsExtract, ToolMessage
-using PromptingTools: has_null_type, is_required_field, remove_null_types, to_json_schema
-using PromptingTools: tool_call_signature, set_properties_strict!, is_concrete_type,
+using PromptingTools2: MaybeExtract, extract_docstring, ItemsExtract, ToolMessage
+using PromptingTools2: has_null_type, is_required_field, remove_null_types, to_json_schema
+using PromptingTools2: tool_call_signature, set_properties_strict!, is_concrete_type,
                       to_json_type, is_not_union_type,
                       update_field_descriptions!, generate_struct
-using PromptingTools: Tool, isabstracttool, execute_tool, parse_tool, get_arg_names,
+using PromptingTools2: Tool, isabstracttool, execute_tool, parse_tool, get_arg_names,
                       get_arg_types, get_method, get_function, remove_field!,
                       tool_call_signature, ToolRef
-using PromptingTools: AbstractToolError, ToolNotFoundError, ToolExecutionError,
+using PromptingTools2: AbstractToolError, ToolNotFoundError, ToolExecutionError,
                       ToolGenericError, is_hidden_field
 
 # TODO: check more edge cases like empty structs

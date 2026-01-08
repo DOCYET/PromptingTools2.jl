@@ -9,7 +9,7 @@ Custom retry layer for HTTP.jl. Once installed, it will catch all errors with st
 # Examples
 ```julia
 using HTTP
-using PromptingTools
+using PromptingTools2
 
 # Enable the retry layer
 enable_retry!()
@@ -32,7 +32,7 @@ enable_retry!(false) # notice the `false` first arg!
 Low-level enable/disable usage:
 ```julia
 # Let's push the layer globally in all HTTP.jl requests
-HTTP.pushlayer!(PromptingTools.CustomRetryLayer.custom_retry_layer, request=true) # for stream handling, we would set request=false
+HTTP.pushlayer!(PromptingTools2.CustomRetryLayer.custom_retry_layer, request=true) # for stream handling, we would set request=false
 
 # We can also remove the layer completely
 HTTP.poplayer!() # you should see it pop off the stack
@@ -232,10 +232,10 @@ It uses the global configuration by default but can be overridden on a per-call 
 # Examples
 ```julia
 using HTTP
-using PromptingTools    
+using PromptingTools2    
 
 # Let's push the layer globally in all HTTP.jl requests
-HTTP.pushlayer!(PromptingTools.CustomRetryLayer.custom_retry_layer, request=true)
+HTTP.pushlayer!(PromptingTools2.CustomRetryLayer.custom_retry_layer, request=true)
 
 # All calls should have retry set for 429 errors
 msg = aigenerate("What is the meaning of life?")
@@ -362,7 +362,7 @@ Configuration hierarchy (from lowest to highest priority):
 # Examples
 ```julia
 using HTTP
-using PromptingTools
+using PromptingTools2
 
 # Enable with default settings
 enable_retry!()
